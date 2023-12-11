@@ -1,0 +1,68 @@
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { serverTimestamp } from "firebase/firestore";
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const config = {
+  apiKey: "AIzaSyCCJqJbDoXeczrKtK2AoBtJ5oeUcNrCbCE",
+  authDomain: "guru-network-ab08d.firebaseapp.com",
+  projectId: "guru-network-ab08d",
+  storageBucket: "guru-network-ab08d.appspot.com",
+  messagingSenderId: "886480936605",
+  appId: "1:886480936605:web:71050f5c9ab8b59dd37e74",
+  measurementId: "G-Q3NL09H9YV"
+};
+
+
+const firebaseApp = firebase.initializeApp(config);
+
+const db = firebaseApp.firestore()
+const buyer = db.collection('buyer');
+const seller = db.collection('seller');
+const developer = db.collection('developer');
+const legal = db.collection('legal');
+const broker = db.collection('broker');
+const general = db.collection('general');
+const financial = db.collection('financial');
+const parchi = db.collection('parchi');
+
+export const addBuyerData = async (obj) => {
+  obj.timestamp = serverTimestamp()
+  await buyer.add(obj);
+}
+
+export const addSellerData = async (obj) => {
+  obj.timestamp = serverTimestamp()
+  await seller.add(obj);
+}
+
+
+export const addDeveloperData = async (obj) => {
+  obj.timestamp = serverTimestamp()
+  await developer.add(obj);
+}
+
+export const addLegalData = async (obj) => {
+  obj.timestamp = serverTimestamp()
+  await legal.add(obj);
+}
+
+export const addBrokerData = async (obj) => {
+  obj.timestamp = serverTimestamp()
+  await broker.add(obj);
+}
+
+export const addGeneralData = async (obj) => {
+  obj.timestamp = serverTimestamp()
+  await general.add(obj);
+}
+
+export const addFinanceData = async (obj) => {
+  obj.timestamp = serverTimestamp()
+  await financial.add(obj);
+}
+
+export const addParchiData = async (obj) => {
+  obj.timestamp = serverTimestamp()
+  await parchi.add(obj);
+}
