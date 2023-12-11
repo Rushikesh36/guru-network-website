@@ -1,4 +1,4 @@
-# wani-samaj-ambernath
+# guru-network
 
 ## Project setup
 ```
