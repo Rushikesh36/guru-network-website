@@ -1767,9 +1767,7 @@ body {
 }
 
 @media (max-width: 992px) {
-  .sub-header {
-    display: none;
-  }
+  
   .header-area .main-nav .logo h1 {
     line-height: 100px;
   }

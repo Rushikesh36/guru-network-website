@@ -117,13 +117,19 @@ export default{
 
 <style scoped>
 .logo{
-  height: 70px;
+  height: 60px;
   width: auto;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
+@media(max-width:1023px) {
+  .info{
+    display: none;
+  }
+}
 @media(min-width:1025px) {
+
+  
   .navbar-brand {
     padding-left: 10px;
     font-size: 1.8rem;
