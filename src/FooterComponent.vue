@@ -67,7 +67,7 @@
                                 <router-link to="/legal" class="">Lawyers</router-link>
                             </p>
                             <p>
-                                <router-link to="/finance" class="">Bankers/Loan Service</router-link>
+                                <router-link to="/finance" class="">Loan Letter</router-link>
                             </p>
                         </div>
                         <!-- Grid column -->

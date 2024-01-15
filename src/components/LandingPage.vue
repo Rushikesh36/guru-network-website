@@ -13,10 +13,10 @@
 
     <v-carousel-item>
       <v-img :src="require('../assets/images/carousel2.jpg')" cover></v-img>
-      <router-link to="/buyer">
+      <router-link to="/finance">
       <div class="carousel-text">
         <p class="">
-          Housing Market Specialist
+          Loan Letter
         </p>
       </div>
       </router-link>
@@ -176,7 +176,7 @@
               <li class="d-flex work-icons">
                 <img src="../assets/images/moon.png" alt="" class="planet-imgs">
                 <router-link to="/finance">
-                <h4>Bankers/Loan Providers</h4>
+                <h4>Loan Letter</h4>
                 </router-link>
               </li>
               
@@ -206,7 +206,7 @@
         <v-tab :value="2">Channel Partners/Brokers</v-tab>
         <v-tab :value="3">Developers</v-tab>
         <v-tab :value="4">Lawyers</v-tab>
-        <v-tab :value="5">Bankers/Loan Providers</v-tab>
+        <v-tab :value="5">Loan Letter</v-tab>
       </v-tabs>
       <v-window v-model="tab">
         <v-window-item :value="1">

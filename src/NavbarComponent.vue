@@ -69,7 +69,7 @@
                 <a class="dropdown-item" href="#">Lawyers</a>
               </router-link>
               <router-link to="/finance">
-                <a class="dropdown-item" href="#">Bankers/Loan Service</a>
+                <a class="dropdown-item" href="#">Loan Letter</a>
               </router-link>
             </div>
           </li>
