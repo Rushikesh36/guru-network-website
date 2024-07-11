@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section data-aos="fade-up">
         <div class="">
         <h2 class="text-center mt-6">BUYER / SELLER FORM</h2>
         </div>

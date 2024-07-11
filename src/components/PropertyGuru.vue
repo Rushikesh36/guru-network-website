@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section data-aos="fade-up">
         <h2 class="text-center pt-5">PROPERTY TRANSACTION GURU</h2>
         <div class="d-flex row pt-12 container property-guru">
             <div class="col-md-5 col-lg-5 col-xl-4 ">

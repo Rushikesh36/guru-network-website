@@ -16,7 +16,7 @@
                 target="_blank"><v-icon color="#000">mdi-instagram</v-icon></a></li>
             <li><a href=" https://www.youtube.com/@propertytransactionguru"
                 target="_blank"><v-icon color="#000">mdi-youtube</v-icon></a></li>
-            <li><a href="https://www.facebook.com/propertytransactionguru/ "
+            <li><a href="https://www.facebook.com/share/fVwyDbmpHqrA11gS/?mibextid=qi2Omg"
                 target="_blank"><v-icon color="#000">mdi-facebook</v-icon></a></li>  
             <li><a href="#" target="_blank"><v-icon color="#000">mdi-linkedin</v-icon></a></li>
             
@@ -57,35 +57,33 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <router-link to="/buyer">
-                <a class="dropdown-item" href="#">House Buyer / Seller</a>
+                <a class="dropdown-item" >House Buyer / Seller</a>
               </router-link>
               <router-link to="/channelpartner">
-                <a class="dropdown-item" href="#">Channel Partners / Broker</a>
+                <a class="dropdown-item" >Channel Partners / Broker</a>
               </router-link>
               <router-link to="/developer">
-                <a class="dropdown-item" href="#">Developers</a>
+                <a class="dropdown-item" >Developers</a>
               </router-link>
-              <router-link to="/legal">
-                <a class="dropdown-item" href="#">Lawyers</a>
-              </router-link>
+            
               <router-link to="/finance">
-                <a class="dropdown-item" href="#">Loan Letter</a>
+                <a class="dropdown-item">Loan letter</a>
               </router-link>
             </div>
           </li>
           <li class="nav-item">
             <router-link to="/about-us">
-            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" >About Us</a>
           </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/contact-us">
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link">Contact Us</a>
           </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/digitalparchi">
-                <a class="nav-link" href="#">Digital Parchi</a>
+                <a class="nav-link">Digital Parchi</a>
             </router-link>
           </li>
         </ul>

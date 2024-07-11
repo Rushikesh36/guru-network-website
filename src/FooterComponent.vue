@@ -2,7 +2,7 @@
     <!-- Remove the container if you want to extend the Footer to full width. -->
     <div class="my-5">
         <!-- Footer -->
-        <footer class="text-center text-lg-start text-white pt-6" style="background-color: #000,color:white">
+        <footer class="text-center text-lg-start text-white pt-6" style="background-color: #000;color:white">
             <!-- Section: Social media -->
             <!-- <section class="p-4" style="background-color: #f35525">
                
@@ -64,9 +64,6 @@
                                 <router-link to="/developer" class="">Developers</router-link>
                             </p>
                             <p>
-                                <router-link to="/legal" class="">Lawyers</router-link>
-                            </p>
-                            <p>
                                 <router-link to="/finance" class="">Loan Letter</router-link>
                             </p>
                         </div>
@@ -120,7 +117,7 @@
 
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-                © 2023 Copyright: Guru Network
+                © 2024 Copyright: Guru Network
             </div>
             <!-- Copyright -->
         </footer>

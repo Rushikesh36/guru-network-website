@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <h2 class="text-center mt-6">LOAN LETTER</h2>
+    <section data-aos="fade-up">
+        <h2 class="text-center mt-6">Loan Letter</h2>
         <div class="mt-8"></div>
         <v-form @submit.prevent="submit" ref="form">
             <div class="center-form add-form">

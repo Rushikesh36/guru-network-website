@@ -4,7 +4,6 @@ import LandingPage from './components/LandingPage';
 import BuyerPage from './components/BuyerPage';
 import DeveloperPage from './components/DeveloperPage';
 import ChannelPage from './components/ChannelPartners';
-import LawyerPage from './components/LawyerPage';
 import PropertyGuru from './components/PropertyGuru';
 import FinancialService from './components/FinancialServices';
 import ThankYouPage from './components/ThankYouPage';
@@ -20,7 +19,6 @@ const router = createRouter({
         { path: '/buyer', component: BuyerPage},
         { path: '/developer', component: DeveloperPage},
         { path: '/channelpartner', component: ChannelPage},
-        { path: '/legal', component: LawyerPage},
         { path: '/propertytransactionguru', component: PropertyGuru},
         { path: '/finance', component: FinancialService },
         { path: '/success', component: ThankYouPage},

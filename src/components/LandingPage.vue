@@ -1,41 +1,183 @@
 <template>
-  <v-carousel show-arrows="hover" hide-delimiters height="800" cycle interval="3000">
-    <v-carousel-item>
-      <v-img :src="require('../assets/images/carousel1.jpg')" cover></v-img>
-      <router-link to="/digitalparchi">
-      <div class="carousel-text">
-        <p class="">
-          DIGITAL PARCHI
-        </p>
+  <section class="mobile-view" data-aos="fade-right">
+    <div class="">
+      <div class="text-center mt-5" >
+        <h2 class="mb-5">Our Services</h2>
+        <div class="container d-flex justify-content-around">
+          <div class="cards " @click="showInfo(2)">
+            <p>
+              <v-icon>mdi-home-plus</v-icon>
+              <br>
+              Buyer
+            </p>
+          </div>
+          <div class="cards" @click="showInfo(1)">
+            <p>
+              <v-icon>mdi-home-minus</v-icon>
+              <br>
+              Seller
+            </p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center pt-5">
+          <div class="cards" @click="showInfo(3)">
+            <p>
+              <v-icon>mdi-currency-inr</v-icon>
+              <br>
+              Loan <br>
+              Letter
+            </p>
+          </div>
+        </div>
+        <div class="pt-8 scroll">
+          <div v-if="activeBox === 1" class="info box">
+            <div class="row">
+              <!-- <div class="col-md-6">
+             
+            </div> -->
+              <div class="data">
+                <b>Ghar bechna chahte ho?<br>
+                  Want to sell your property?</b>
+                <br />
+                Aa jao boss, we'll help you close the deal! List your property with us and reach the right buyers in no
+                time. Let's make selling hassle-free.
+                <br>
+                <router-link to="/buyer">
+                  <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+                </router-link>
+              </div>
+
+            </div>
+          </div>
+          <div v-if="activeBox === 2" class="info box">
+
+            <div class="data">
+              <b>Ghar kharidna chahte ho?
+                <br>
+                Searching for your dream home?</b>
+              <br>
+              Aa jao, we'll show you a range of options perfectly tailored to your preferences! From cozy apartments
+              to spacious villas, we've got it all. Discover your ideal home with Guru Network.
+              <br>
+              <router-link to="/buyer">
+                <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+              </router-link>
+            </div>
+          </div>
+          <div v-if="activeBox === 3" class="info box">
+            <div class="data">
+              <b>Loan karana chahte ho? Banker chahiye? <br>
+                Need a loan to fulfill your dreams?</b>
+              <br>
+
+              Aa jao, we'll connect you with the right bankers and make your loan process smooth
+              <br>
+              <router-link to="/finance">
+                <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+              </router-link>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </router-link>
-    </v-carousel-item>
 
-    <v-carousel-item>
-      <v-img :src="require('../assets/images/carousel2.jpg')" cover></v-img>
-      <router-link to="/finance">
-      <div class="carousel-text">
-        <p class="">
-          Loan Letter
-        </p>
+      <div class="text-center mt-5" data-aos="">
+        <h2 class="mb-5">Whom we work with?</h2>
+        <div class="container d-flex justify-content-around">
+          <div class="cards " @click="showInfo2(1)">
+            <p>
+              <v-icon>mdi-handshake</v-icon>
+              <br>
+              Brokers
+            </p>
+          </div>
+          <div class="cards" @click="showInfo2(2)">
+            <p>
+              <v-icon>mdi-domain</v-icon>
+              <br>
+              Developer
+            </p>
+          </div>
+        </div>
+      
+        <div class="pt-8 scroll2">
+          <div v-if="activeBox2 === 1" class="info box">
+            <div class="row">
+              <!-- <div class="col-md-6">
+             
+            </div> -->
+              <div class="data">
+                <b>Channel partner ho? <br>
+                  Humare saath logo ko best service dena chahte ho? </b>
+                <br>
+                To Aa Jao boss!!
+                <br>
+                Fill the form given below & our team will reach out to you soon
+                <br>
+                <router-link to="/channelpartner">
+                  <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>  
+                </router-link>
+              </div>
+
+            </div>
+          </div>
+          <div v-if="activeBox2 === 2" class="info box">
+
+            <div class="data">
+              <b>Advertising chahiye?
+                <br>
+                Are you a developer looking to showcase your projects?</b>
+              <br>
+              Aa jao, let's amplify your reach and put your developments in the spotlight! Partner with Guru Network
+              for effective advertising on Property Transaction Guru.
+              <br>
+              <router-link to="/developer">
+                <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+              </router-link>
+            </div>
+          </div>
+        </div>
       </div>
-      </router-link>
+    </div>
+  </section>
+  <div class="desktop-view">
+    <v-carousel show-arrows="hover" hide-delimiters height="800" cycle interval="3000">
+      <v-carousel-item>
+        <v-img :src="require('../assets/images/carousel1.jpg')" cover></v-img>
+        <router-link to="/digitalparchi">
+          <div class="carousel-text">
+            <p class="">
+              DIGITAL PARCHI
+            </p>
+          </div>
+        </router-link>
+      </v-carousel-item>
 
-    </v-carousel-item>
+      <v-carousel-item>
+        <v-img :src="require('../assets/images/carousel2.jpg')" cover></v-img>
+        <router-link to="/buyer">
+          <div class="carousel-text">
+            <p class="">
+              Loan Letter
+            </p>
+          </div>
+        </router-link>
 
-    <v-carousel-item>
-      <v-img :src="require('../assets/images/carousel3.jpg')" cover></v-img>
-      <router-link to="/legal">
-      <div class="carousel-text">
-        <p class="">
-          Legal Services at Your Fingertips
-        </p>
-      </div>
-      </router-link>
-    </v-carousel-item>
-  </v-carousel>
+      </v-carousel-item>
 
-  <div class="fun-facts">
+      <v-carousel-item>
+        <v-img :src="require('../assets/images/carousel3.jpg')" cover></v-img>
+        <router-link to="/channelpartners">
+          <div class="carousel-text">
+            <p class="">
+              Expert Brokers at Your Service
+            </p>
+          </div>
+        </router-link>
+      </v-carousel-item>
+    </v-carousel>
+  </div>
+  <div class="fun-facts" data-aos="fade-left">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -44,8 +186,8 @@
               <div class="col-lg-4">
                 <div class="counter">
                   <h2 class="timer count-title count-number">
-                    <vue3-autocounter ref='counter' :startAmount='0' :endAmount='3000' :duration='1' prefix='' suffix='+'
-                      separator=',' decimalSeparator='.' :decimals='0' :autoinit='true' />
+                    <vue3-autocounter ref='counter' :startAmount='0' :endAmount='3000' :duration='1' prefix=''
+                      suffix='+' separator=',' decimalSeparator='.' :decimals='0' :autoinit='true' />
                   </h2>
 
                   <p class="count-text ">Happys<br>Clients</p>
@@ -75,7 +217,7 @@
   </div>
 
 
-  <div class="featured section" id="about-us">
+  <div class="featured section" id="about-us" >
     <div class="container what-we-do">
       <div class="typewriter text-center">
         <!-- <p>
@@ -92,121 +234,67 @@
           <span class="cursor" :class="{ typing: typeStatus }">&nbsp;</span>
         </p>
       </div>
-      <div class="d-flex row justify-content-start what">
-        <div class="row">
-          <div class="col-md-6">
-            <h1 class="pb-5">What we do?</h1>
-          </div>
-          <div class="col-md-6 ">
-            <h1 class="pb-5 text-center whom-desk">Whom we work with?</h1>
-          </div>
+
+<div class="what" data-aos="fade-up">
+      <div class="pt-8">
+        <div class="what-we-do-desk" >
+          <h1 class="pb-5">What we do?</h1>
+          <ul>
+            <li>At Guru Network, we have carved out a niche as a premier real estate mandate firm, often referred to as
+              a "Sole Selling Agency." Our specialty lies in expediting the sales process for developers, ensuring that
+              their properties find swift and efficient buyers.</li>
+            <li>Our core expertise resides in the dynamic realms of sales and marketing, where we deploy our extensive
+              knowledge and experience to assist developers in seamlessly selling their properties. We take pride in our
+              ability to navigate the intricacies of the market, positioning your offerings for success.</li>
+            <li>Beyond our core expertise in sales and marketing, our network proudly hosts a team of accomplished
+              lawyers who play an indispensable role in handling the complex legal aspects of property transactions.
+              With their legal acumen, we meticulously oversee all facets of buying and selling homes, providing our
+              clients with a sense of security and confidence.</li>
+            <li>In essence, Guru Network is your trusted partner for comprehensive real estate solutions, blending
+              professionalism and proficiency to meet your every need.</li>
+          </ul>
+
         </div>
-        <div class="col-md-6 col-lg-7">
-          <div class="what-we-do-desk">
-            <ul>
-              <li>At Guru Network, we have carved out a niche as a premier real estate mandate firm, often referred to as
-                a "Sole Selling Agency." Our specialty lies in expediting the sales process for developers, ensuring that
-                their properties find swift and efficient buyers.</li>
+        <div class="what-we-do-mob">
+          <h1 class="pb-8 text-center">What we do?</h1>
+          <ul>
+            <li>At Guru Network, we have carved out a niche as a premier real estate mandate firm, often referred to as
+              a "Sole Selling Agency." Our specialty lies in expediting the sales process for developers, ensuring that
+              their properties find swift and efficient buyers. <span id="dots">...</span></li>
+
+            <span id="more">
+
               <li>Our core expertise resides in the dynamic realms of sales and marketing, where we deploy our extensive
-                knowledge and experience to assist developers in seamlessly selling their properties. We take pride in our
-                ability to navigate the intricacies of the market, positioning your offerings for success.</li>
+                knowledge and experience to assist developers in seamlessly selling their properties. We take pride in
+                our ability to navigate the intricacies of the market, positioning your offerings for success.</li>
               <li>Beyond our core expertise in sales and marketing, our network proudly hosts a team of accomplished
                 lawyers who play an indispensable role in handling the complex legal aspects of property transactions.
                 With their legal acumen, we meticulously oversee all facets of buying and selling homes, providing our
                 clients with a sense of security and confidence.</li>
               <li>In essence, Guru Network is your trusted partner for comprehensive real estate solutions, blending
                 professionalism and proficiency to meet your every need.</li>
-            </ul>
-            
-          </div>
-          <div class="what-we-do-mob">
-            <ul>
-              <li>At Guru Network, we have carved out a niche as a premier real estate mandate firm, often referred to as
-                a "Sole Selling Agency." Our specialty lies in expediting the sales process for developers, ensuring that
-                their properties find swift and efficient buyers. <span id="dots">...</span></li>
+            </span>
+            <v-btn color="#f35525" id="myBtn" @click="myFunction">Read More</v-btn>
 
-              <span id="more">
+          </ul>
 
-                <li>Our core expertise resides in the dynamic realms of sales and marketing, where we deploy our extensive
-                  knowledge and experience to assist developers in seamlessly selling their properties. We take pride in
-                  our ability to navigate the intricacies of the market, positioning your offerings for success.</li>
-                <li>Beyond our core expertise in sales and marketing, our network proudly hosts a team of accomplished
-                  lawyers who play an indispensable role in handling the complex legal aspects of property transactions.
-                  With their legal acumen, we meticulously oversee all facets of buying and selling homes, providing our
-                  clients with a sense of security and confidence.</li>
-                <li>In essence, Guru Network is your trusted partner for comprehensive real estate solutions, blending
-                  professionalism and proficiency to meet your every need.</li>
-              </span>
-              <v-btn color="#f35525" id="myBtn" @click="myFunction">Read More</v-btn>
-
-            </ul>
-            <h1 class="pt-5">Whom we work with?</h1>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-5">
-          <div class="info-table">
-            <ul class="">
-              <li class="d-flex work-icons">
-                  <img src="../assets/images/uranus.png" alt="" class="planet-imgs">
-                  <router-link to="/digitalParchi">
-                  <h4>Digital Parchi</h4>
-                  </router-link>
-                </li>
-                <li class="d-flex work-icons">
-                  <img src="../assets/images/planet-earth.png" alt="" class="planet-imgs">
-                  <router-link to="/buyer">
-                  <h4>House Buyers/Sellers</h4>
-                  </router-link>
-                </li>
-              
-              <li class="d-flex work-icons">
-                <img src="../assets/images/saturn.png" alt="" class="planet-imgs">
-                <router-link to="/channelpartner">
-                <h4>Channel Partners/Brokers</h4>
-              </router-link>
-              </li>
-              
-              <li class="d-flex work-icons">
-                <img src="../assets/images/venus.png" alt="" class="planet-imgs">
-                <router-link to="/developer">
-                <h4>Developers</h4>
-                </router-link>
-              </li>
-              
-              <li class="d-flex work-icons">
-                <img src="../assets/images/moon.png" alt="" class="planet-imgs">
-                <router-link to="/finance">
-                <h4>Loan Letter</h4>
-                </router-link>
-              </li>
-              
-              <li class="d-flex work-icons">
-                <img src="../assets/images/mars.png" alt="" class="planet-imgs">
-                <router-link to="/legal">
-                <h4>Lawyers</h4>
-              </router-link>
-              </li>
-              <li class="d-flex work-icons">
-                <img src="../assets/images/neptune.png" alt="" class="planet-imgs">
-                <h4 @click="goToContact" class="contact-us">Brands</h4>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
+
+    </div>
   </div>
 
- 
-  <div class="section connect">
+
+
+  <div class="section connect desktop-view">
     <div class="mt-12 text-center">
       <h2 class="text-center mb-6">Connect with us right now!</h2>
       <v-tabs v-model="tab" color="#f35525" align-tabs="center">
         <v-tab :value="1">House Buyers/Sellers</v-tab>
         <v-tab :value="2">Channel Partners/Brokers</v-tab>
         <v-tab :value="3">Developers</v-tab>
-        <v-tab :value="4">Lawyers</v-tab>
-        <v-tab :value="5">Loan Letter</v-tab>
+        <v-tab :value="4">Loan Letter</v-tab>
       </v-tabs>
       <v-window v-model="tab">
         <v-window-item :value="1">
@@ -218,12 +306,14 @@
               <div class="col-md-6 data">
                 Ghar kharidna chahte ho? Searching for your dream home?
                 <br>
-                 Aa jao, we'll show you a range of options perfectly tailored to your preferences! From cozy apartments to spacious villas, we've got it all. Discover your ideal home with Guru Network.
+                Aa jao, we'll show you a range of options perfectly tailored to your preferences! From cozy apartments
+                to spacious villas, we've got it all. Discover your ideal home with Guru Network.
                 <br>
-                Ghar bechna chahte ho? Want to sell your property? 
+                Ghar bechna chahte ho? Want to sell your property?
                 <br>
-                Aa jao boss, we'll help you close the deal! List your property with us and reach the right buyers in no time. Let's make selling hassle-free.
-                <br> 
+                Aa jao boss, we'll help you close the deal! List your property with us and reach the right buyers in no
+                time. Let's make selling hassle-free.
+                <br>
                 <router-link to="/buyer">
                   <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
                 </router-link>
@@ -257,9 +347,10 @@
                 <v-img :src="require('../assets/images/developers.jpg')"></v-img>
               </div>
               <div class="col-md-6 data">
-                Advertising chahiye? Are you a developer looking to showcase your projects? 
+                Advertising chahiye? Are you a developer looking to showcase your projects?
                 <br>
-                Aa jao, let's amplify your reach and put your developments in the spotlight! Partner with Guru Network for effective advertising on Property Transaction Guru.
+                Aa jao, let's amplify your reach and put your developments in the spotlight! Partner with Guru Network
+                for effective advertising on Property Transaction Guru.
                 <br>
                 <router-link to="/developer">
                   <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
@@ -272,28 +363,10 @@
           <v-container fluid>
             <div class="row">
               <div class="col-md-6">
-                <v-img :src="require('../assets/images/lawyers.jpg')"></v-img>
-              </div>
-              <div class="col-md-6 data">
-                Registrations & other legalities karni hai? Legalities can be daunting.
-                <br>
-                Aa jao, our experts will guide you through the process effortlessly! Get your registrations sorted with Guru Network
-                <br />
-                <router-link to="/legal">
-                  <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
-                </router-link>
-              </div>
-            </div>
-          </v-container>
-        </v-window-item>
-        <v-window-item :value="5">
-          <v-container fluid>
-            <div class="row">
-              <div class="col-md-6">
                 <v-img :src="require('../assets/images/banking.jpg')"></v-img>
               </div>
               <div class="col-md-6 data">
-                Loan karana chahte ho? Banker chahiye? Need a loan to fulfill your dreams? 
+                Loan karana chahte ho? Banker chahiye? Need a loan to fulfill your dreams?
                 <br>
                 Aa jao, we'll connect you with the right bankers and make your loan process smooth
                 <br />
@@ -362,14 +435,14 @@
             <div class="col-lg-4">
               <div class="item phone">
                 <a href="tel:8588870108">
-                <h6>8588870108<br><span>Phone Number</span></h6>
+                  <h6>8588870108<br><span>Phone Number</span></h6>
                 </a>
               </div>
             </div>
             <div class="col-lg-5">
               <div class="item email">
                 <a href="mailto:contact@gurunetwork.in">
-                <h6>contact@gurunetwork.in<br><span>Business Email</span></h6>
+                  <h6>contact@gurunetwork.in<br><span>Business Email</span></h6>
                 </a>
               </div>
             </div>
@@ -392,8 +465,8 @@
               <div class="col-lg-12">
                 <fieldset>
                   <label for="name">Full Name</label>
-                  <input type="name" v-model="obj.name" name="name" id="name" placeholder="Your Name..." autocomplete="on"
-                    required>
+                  <input type="name" v-model="obj.name" name="name" id="name" placeholder="Your Name..."
+                    autocomplete="on" required>
                 </fieldset>
               </div>
               <div class="col-lg-12">
@@ -441,6 +514,8 @@ export default {
   data: () => {
     return {
       snackbar: false,
+      activeBox: 2,
+      activeBox2: null,
       obj: {
         name: '',
         phoneNumber: '',
@@ -462,24 +537,24 @@ export default {
       charIndex: 0,
     };
   },
-  mounted(){
-    if(this.path === '/about-us'){
-        document.querySelector(".what").scrollIntoView({ behavior: 'smooth' });      
-      }else if(this.path === '/contact-us'){
-        document.querySelector("#contact-us").scrollIntoView({ behavior: 'smooth' });      
+  mounted() {
+    if (this.path === '/about-us') {
+      document.querySelector(".what").scrollIntoView({ behavior: 'smooth' });
+    } else if (this.path === '/contact-us') {
+      document.querySelector("#contact-us").scrollIntoView({ behavior: 'smooth' });
     }
   },
-  computed:{
-    path(){
+  computed: {
+    path() {
       return this.$route.path;
     }
   },
   watch: {
-    path(val){
-      if(val === '/about-us'){
-        document.querySelector(".what").scrollIntoView({ behavior: 'smooth' });      
-      }else if(val === '/contact-us'){
-        document.querySelector("#contact-us").scrollIntoView({ behavior: 'smooth' });      
+    path(val) {
+      if (val === '/about-us') {
+        document.querySelector(".what").scrollIntoView({ behavior: 'smooth' });
+      } else if (val === '/contact-us') {
+        document.querySelector("#contact-us").scrollIntoView({ behavior: 'smooth' });
       }
     }
   },
@@ -488,8 +563,22 @@ export default {
   },
 
   methods: {
-    goToContact(){
-      document.querySelector("#contact-us").scrollIntoView({ behavior: 'smooth' });      
+    showInfo(boxNumber) {
+      this.activeBox = boxNumber;
+      const target = document.querySelector(".scroll");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    showInfo2(boxNumber) {
+      this.activeBox2 = boxNumber;
+      const target = document.querySelector(".scroll2");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    goToContact() {
+      document.querySelector("#contact-us").scrollIntoView({ behavior: 'smooth' });
     },
     async sendMail(obj) {
       let name = obj.name;
@@ -587,13 +676,100 @@ export default {
     },
     created() {
       setTimeout(this.typeText, this.newTextDelay + 200);
-    }
+    },
+
   }
 
 }
 </script>
 
 <style scoped>
+.mobile-view {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.cards {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 150px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.cards:hover {
+  transform: translateY(-5px);
+}
+
+.info.box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info.box .data {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+v-btn {
+  background-color: #f35525;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+v-btn:hover {
+  background-color: #d9441d;
+}
+
+.cards {
+  width: 30vw;
+  height: 30vw;
+  display: flex;
+  justify-content: center;
+  /* Horizontal alignment */
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+.cards p {
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+.cards v-icon {
+  font-size: 2rem;
+
+}
+
+
+
+.box {
+  text-align: center;
+  justify-content: center !important;
+  height: auto;
+  width: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+
 .work-icons .v-icon {
   color: #f35525;
   font-size: 3.5rem;
@@ -622,6 +798,8 @@ export default {
 
 .what-we-do-desk {
   display: block !important;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 #more {
@@ -635,7 +813,7 @@ export default {
 
 .connect .data {
   text-align: left !important;
- 
+
   padding-right: 3vw;
 }
 
@@ -693,19 +871,35 @@ export default {
   font-size: 1.25rem;
 }
 
-.planet-imgs{
+.planet-imgs {
   position: relative;
   height: 60px;
   width: auto;
 }
 
-/* //mobilesection */
-@media(max-width: 767px) {
+.mobile-view {
+  display: none;
+}
 
-  .typed-text{
+.desktop-view {
+  display: block;
+}
+
+/* //mobilesection */
+@media(max-width: 1023px) {
+  .desktop-view {
+    display: none !important;
+  }
+
+  .mobile-view {
+    display: block !important;
+  }
+
+  .typed-text {
     line-height: 50px !important;
     font-size: 1.5rem !important;
   }
+
   .carousel-text p {
     font-size: 0.75rem;
     color: #fff;
@@ -739,7 +933,8 @@ export default {
   }
 
   .data {
-    padding-top: 5vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     font-size: 1.15rem;
   }
 
@@ -780,7 +975,7 @@ export default {
     display: block !important;
   }
 
-  .what-we-do-mob li{
+  .what-we-do-mob li {
     font-size: 1rem !important;
   }
 
@@ -846,9 +1041,17 @@ span.typing {
   animation: none;
 }
 
+.typewriter {
+  height: 10em;
+  /* Adjust this value based on your text size */
+  overflow: hidden;
+}
+
 .typewriter p {
   font-size: 2rem;
   padding-bottom: 6vh;
+  display: inline-block;
+
 }
 
 .contact-content .item h6 {

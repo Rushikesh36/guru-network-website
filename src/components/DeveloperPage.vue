@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section data-aos="fade-up">
         <h2 class="text-center mt-6">DEVELOPER FORM</h2>
         <div class="mt-8"></div>
         <v-form @submit.prevent="submit" ref="form">
