@@ -9,6 +9,7 @@ import FinancialService from './components/FinancialServices';
 import ThankYouPage from './components/ThankYouPage';
 import DigitalParchi from './components/DigitalParchi';
 import CreditsPage from './components/CreditsPage';
+import MeetingPage from './components/MeetingPage';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -24,6 +25,7 @@ const router = createRouter({
         { path: '/success', component: ThankYouPage},
         { path: '/digitalparchi', component: DigitalParchi},
         { path: '/credits', component: CreditsPage},
+        { path: '/meeting', component: MeetingPage},
         
     ],
     scrollBehavior(to) {

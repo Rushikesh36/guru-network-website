@@ -71,20 +71,26 @@
               </router-link>
             </div>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link to="/about-us">
             <a class="nav-link" >About Us</a>
           </router-link>
+          </li> -->
+          <li class="nav-item">
+            <router-link to="/digitalparchi">
+                <a class="nav-link">Digital Parchi</a>
+            </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/contact-us">
             <a class="nav-link">Contact Us</a>
           </router-link>
           </li>
+        
           <li class="nav-item">
-            <router-link to="/digitalparchi">
-                <a class="nav-link">Digital Parchi</a>
-            </router-link>
+            <router-link to="/meeting">
+              <v-btn color="#f35525" ><a href="" class="nav-link">Book a Meeting</a></v-btn>
+          </router-link>
           </li>
         </ul>
       </div>
@@ -114,6 +120,16 @@ export default{
 </script>
 
 <style scoped>
+v-btn {
+  background-color: #f35525;
+  color: #fff !important;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
 .logo{
   height: 60px;
   width: auto;
@@ -134,13 +150,13 @@ export default{
   }
 
   .navbar {
-    font-size: 1.2rem;
+    font-size: 1rem;
 
   }
 
   .navbar li {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 
   .navbar ul {
@@ -149,12 +165,16 @@ export default{
 
   .navbar .container-fluid {
     padding-left: 11vw;
-    padding-right: 10vw;
+    padding-right: 2.5vw;
   }
 }
 
-.navbar ul li{
+/* .navbar ul li{
   color: black !important;
+} */
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff !important;
 }
 .info a {
   color: inherit;
