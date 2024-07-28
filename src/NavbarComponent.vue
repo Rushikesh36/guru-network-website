@@ -87,11 +87,11 @@
           </router-link>
           </li>
         
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link to="/meeting">
               <v-btn color="#f35525" ><a href="" class="nav-link">Book a Meeting</a></v-btn>
           </router-link>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

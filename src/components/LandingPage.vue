@@ -167,7 +167,7 @@
 
       <v-carousel-item>
         <v-img :src="require('../assets/images/carousel3.jpg')" cover></v-img>
-        <router-link to="/channelpartners">
+        <router-link to="/channelpartner">
           <div class="carousel-text">
             <p class="">
               Expert Brokers at Your Service
