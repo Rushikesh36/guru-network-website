@@ -746,7 +746,7 @@ v-btn:hover {
 
 .cards p {
   font-weight: 500;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .cards v-icon {
