@@ -1,10 +1,10 @@
 <template>
   <section class="mobile-view" data-aos="fade-right">
     <div class="">
-      <div class="text-center mt-5" >
+      <div class="text-center mt-5">
         <h2 class="mb-5">Our Services</h2>
         <div class="container d-flex justify-content-around">
-          <div class="cards " @click="showInfo(2)">
+          <div class="cards" @click="showInfo(2)">
             <p>
               <v-icon>mdi-home-plus</v-icon>
               <br>
@@ -29,56 +29,85 @@
             </p>
           </div>
         </div>
-        <div class="pt-8 scroll">
-          <div v-if="activeBox === 1" class="info box">
-            <div class="row">
-              <!-- <div class="col-md-6">
-             
-            </div> -->
+        <v-dialog v-model="dialog" max-width="500px">
+          <v-card v-if="activeBox === 2">
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="dialog = false">
+                <v-icon color="red">mdi-close</v-icon>
+              </v-btn>
+            </v-card-actions>
+            <v-card-title class="headline">Buyer</v-card-title>
+            <v-card-text>
               <div class="data">
-                <b>Ghar bechna chahte ho?<br>
-                  Want to sell your property?</b>
+                <b>Ghar kharidna chahte ho?<br> Searching for your dream home?</b>
+                <br />
+                Aa jao, we'll show you a range of options perfectly tailored to your preferences! From cozy apartments
+                to spacious villas, we've got it all. Discover your ideal home with Guru Network.
+                <br />
+                <div class="contact_button">
+                  <router-link to="/buyer">
+                    <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+                  </router-link>
+                </div>
+              </div>
+            </v-card-text>
+
+          </v-card>
+
+          <!-- Dialog for Seller -->
+          <v-card v-if="activeBox === 1">
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="dialog = false">
+                <v-icon color="red">mdi-close</v-icon>
+              </v-btn>
+            </v-card-actions>
+            <v-card-title class="headline">Seller</v-card-title>
+            <v-card-text>
+              <div class="data">
+                <b>Ghar bechna chahte ho?<br> Want to sell your property?</b>
                 <br />
                 Aa jao boss, we'll help you close the deal! List your property with us and reach the right buyers in no
                 time. Let's make selling hassle-free.
-                <br>
-                <router-link to="/buyer">
-                  <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
-                </router-link>
+                <br />
+                <div class="contact_button">
+                  <router-link to="/buyer">
+                    <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+                  </router-link>
+                </div>
               </div>
+            </v-card-text>
 
-            </div>
-          </div>
-          <div v-if="activeBox === 2" class="info box">
+          </v-card>
 
-            <div class="data">
-              <b>Ghar kharidna chahte ho?
-                <br>
-                Searching for your dream home?</b>
-              <br>
-              Aa jao, we'll show you a range of options perfectly tailored to your preferences! From cozy apartments
-              to spacious villas, we've got it all. Discover your ideal home with Guru Network.
-              <br>
-              <router-link to="/buyer">
-                <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
-              </router-link>
-            </div>
-          </div>
-          <div v-if="activeBox === 3" class="info box">
-            <div class="data">
-              <b>Loan karana chahte ho? Banker chahiye? <br>
-                Need a loan to fulfill your dreams?</b>
-              <br>
+          <!-- Dialog for Loan -->
+          <v-card v-if="activeBox === 3">
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="dialog = false">
+                <v-icon color="red">mdi-close</v-icon>
+              </v-btn>
+            </v-card-actions>
+            <v-card-title class="headline">Loan Letter</v-card-title>
+            <v-card-text>
+              <div class="data">
+                <b>Loan karana chahte ho? <br> Need a loan to fulfill your dreams?</b>
+                <br />
+                Aa jao, we'll connect you with the right bankers and make your loan process smooth.
+                <br />
+                <div class="contact_button">
+                  <router-link to="/finance">
+                    <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+                  </router-link>
+                </div>
+              </div>
+            </v-card-text>
+          </v-card>
 
-              Aa jao, we'll connect you with the right bankers and make your loan process smooth
-              <br>
-              <router-link to="/finance">
-                <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
-              </router-link>
-            </div>
+          <!-- Dialog for Brokers -->
 
-          </div>
-        </div>
+        </v-dialog>
       </div>
 
       <div class="text-center mt-5" data-aos="">
@@ -99,44 +128,59 @@
             </p>
           </div>
         </div>
-      
-        <div class="pt-8 scroll2">
-          <div v-if="activeBox2 === 1" class="info box">
-            <div class="row">
-              <!-- <div class="col-md-6">
-             
-            </div> -->
+        <v-dialog v-model="dialog2" max-width="500px">
+          <v-card v-if="activeBox2 === 1">
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="dialog2 = false">
+                <v-icon color="red">mdi-close</v-icon>
+              </v-btn>
+            </v-card-actions>
+            <v-card-title class="headline">Brokers</v-card-title>
+            <v-card-text>
               <div class="data">
                 <b>Channel partner ho? <br>
-                  Humare saath logo ko best service dena chahte ho? </b>
-                <br>
+                  Humare saath logo ko best service dena chahte ho?</b>
+                <br />
                 To Aa Jao boss!!
-                <br>
-                Fill the form given below & our team will reach out to you soon
-                <br>
-                <router-link to="/channelpartner">
-                  <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>  
-                </router-link>
+                <br />
+                Fill the form given below & our team will reach out to you soon.
+                <br />
+                <div class="contact_button">
+                  <router-link to="/channelpartner">
+                    <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+                  </router-link>
+                </div>
               </div>
+            </v-card-text>
 
-            </div>
-          </div>
-          <div v-if="activeBox2 === 2" class="info box">
+          </v-card>
 
-            <div class="data">
-              <b>Advertising chahiye?
-                <br>
-                Are you a developer looking to showcase your projects?</b>
-              <br>
-              Aa jao, let's amplify your reach and put your developments in the spotlight! Partner with Guru Network
-              for effective advertising on Property Transaction Guru.
-              <br>
-              <router-link to="/developer">
-                <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
-              </router-link>
-            </div>
-          </div>
-        </div>
+          <!-- Dialog for Developer -->
+          <v-card v-if="activeBox2 === 2">
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="dialog2 = false">
+                <v-icon color="red">mdi-close</v-icon>
+              </v-btn>
+            </v-card-actions>
+            <v-card-title class="headline">Developer</v-card-title>
+            <v-card-text>
+              <div class="data">
+                <b>Advertising chahiye?<br> Are you a developer looking to showcase your projects?</b>
+                <br />
+                Aa jao, let's amplify your reach and put your developments in the spotlight! Partner with Guru Network
+                for effective advertising on Property Transaction Guru.
+                <br />
+                <div class="contact_button">
+                  <router-link to="/developer">
+                    <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+                  </router-link>
+                </div>
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-dialog>
       </div>
     </div>
   </section>
@@ -217,7 +261,7 @@
   </div>
 
 
-  <div class="featured section" id="about-us" >
+  <div class="featured section" id="about-us">
     <div class="container what-we-do">
       <div class="typewriter text-center">
         <!-- <p>
@@ -235,52 +279,58 @@
         </p>
       </div>
 
-<div class="what" data-aos="fade-up">
-      <div class="pt-8">
-        <div class="what-we-do-desk" >
-          <h1 class="pb-5">What we do?</h1>
-          <ul>
-            <li>At Guru Network, we have carved out a niche as a premier real estate mandate firm, often referred to as
-              a "Sole Selling Agency." Our specialty lies in expediting the sales process for developers, ensuring that
-              their properties find swift and efficient buyers.</li>
-            <li>Our core expertise resides in the dynamic realms of sales and marketing, where we deploy our extensive
-              knowledge and experience to assist developers in seamlessly selling their properties. We take pride in our
-              ability to navigate the intricacies of the market, positioning your offerings for success.</li>
-            <li>Beyond our core expertise in sales and marketing, our network proudly hosts a team of accomplished
-              lawyers who play an indispensable role in handling the complex legal aspects of property transactions.
-              With their legal acumen, we meticulously oversee all facets of buying and selling homes, providing our
-              clients with a sense of security and confidence.</li>
-            <li>In essence, Guru Network is your trusted partner for comprehensive real estate solutions, blending
-              professionalism and proficiency to meet your every need.</li>
-          </ul>
-
-        </div>
-        <div class="what-we-do-mob">
-          <h1 class="pb-8 text-center">What we do?</h1>
-          <ul>
-            <li>At Guru Network, we have carved out a niche as a premier real estate mandate firm, often referred to as
-              a "Sole Selling Agency." Our specialty lies in expediting the sales process for developers, ensuring that
-              their properties find swift and efficient buyers. <span id="dots">...</span></li>
-
-            <span id="more">
-
+      <div class="what" data-aos="fade-up">
+        <div class="pt-8">
+          <div class="what-we-do-desk">
+            <h1 class="pb-5">What we do?</h1>
+            <ul>
+              <li>At Guru Network, we have carved out a niche as a premier real estate mandate firm, often referred to
+                as
+                a "Sole Selling Agency." Our specialty lies in expediting the sales process for developers, ensuring
+                that
+                their properties find swift and efficient buyers.</li>
               <li>Our core expertise resides in the dynamic realms of sales and marketing, where we deploy our extensive
                 knowledge and experience to assist developers in seamlessly selling their properties. We take pride in
-                our ability to navigate the intricacies of the market, positioning your offerings for success.</li>
+                our
+                ability to navigate the intricacies of the market, positioning your offerings for success.</li>
               <li>Beyond our core expertise in sales and marketing, our network proudly hosts a team of accomplished
                 lawyers who play an indispensable role in handling the complex legal aspects of property transactions.
                 With their legal acumen, we meticulously oversee all facets of buying and selling homes, providing our
                 clients with a sense of security and confidence.</li>
               <li>In essence, Guru Network is your trusted partner for comprehensive real estate solutions, blending
                 professionalism and proficiency to meet your every need.</li>
-            </span>
-            <v-btn color="#f35525" id="myBtn" @click="myFunction">Read More</v-btn>
+            </ul>
 
-          </ul>
+          </div>
+          <div class="what-we-do-mob">
+            <h1 class="pb-8 text-center">What we do?</h1>
+            <ul>
+              <li>At Guru Network, we have carved out a niche as a premier real estate mandate firm, often referred to
+                as
+                a "Sole Selling Agency." Our specialty lies in expediting the sales process for developers, ensuring
+                that
+                their properties find swift and efficient buyers. <span id="dots">...</span></li>
 
+              <span id="more">
+
+                <li>Our core expertise resides in the dynamic realms of sales and marketing, where we deploy our
+                  extensive
+                  knowledge and experience to assist developers in seamlessly selling their properties. We take pride in
+                  our ability to navigate the intricacies of the market, positioning your offerings for success.</li>
+                <li>Beyond our core expertise in sales and marketing, our network proudly hosts a team of accomplished
+                  lawyers who play an indispensable role in handling the complex legal aspects of property transactions.
+                  With their legal acumen, we meticulously oversee all facets of buying and selling homes, providing our
+                  clients with a sense of security and confidence.</li>
+                <li>In essence, Guru Network is your trusted partner for comprehensive real estate solutions, blending
+                  professionalism and proficiency to meet your every need.</li>
+              </span>
+              <v-btn color="#f35525" id="myBtn" @click="myFunction">Read More</v-btn>
+
+            </ul>
+
+          </div>
         </div>
       </div>
-    </div>
 
     </div>
   </div>
@@ -514,8 +564,10 @@ export default {
   data: () => {
     return {
       snackbar: false,
-      activeBox: 2,
+      activeBox: null,
       activeBox2: null,
+      dialog: false,
+      dialog2: false,
       obj: {
         name: '',
         phoneNumber: '',
@@ -565,17 +617,11 @@ export default {
   methods: {
     showInfo(boxNumber) {
       this.activeBox = boxNumber;
-      const target = document.querySelector(".scroll");
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
+      this.dialog = true;
     },
     showInfo2(boxNumber) {
       this.activeBox2 = boxNumber;
-      const target = document.querySelector(".scroll2");
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
+      this.dialog2 = true;
     },
     goToContact() {
       document.querySelector("#contact-us").scrollIntoView({ behavior: 'smooth' });
@@ -699,6 +745,22 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.3s;
+}
+
+.v-card-title {
+  text-align: center;
+  padding-top: 2.5vh;
+  margin-bottom: -2.5vh;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.v-card-actions {
+  margin-bottom: -5vh;
+}
+
+.contact_button {
+  text-align: center;
 }
 
 .cards:hover {
@@ -885,6 +947,7 @@ v-btn:hover {
   display: block;
 }
 
+
 /* //mobilesection */
 @media(max-width: 1023px) {
   .desktop-view {
@@ -938,6 +1001,7 @@ v-btn:hover {
     font-size: 1.15rem;
   }
 
+  
   .featured {
     margin-top: 0px !important;
   }
