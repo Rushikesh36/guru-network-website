@@ -63,10 +63,7 @@ html {
 
 .background::after {
     content: '';
-    background: #60a9ff;
-    background: -moz-linear-gradient(top, #60a9ff 0%, #4394f4 100%);
-    background: -webkit-linear-gradient(top, #60a9ff 0%, #4394f4 100%);
-    background: linear-gradient(to bottom, #60a9ff 0%, #4394f4 100%);
+    background: #ff9372;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#60a9ff', endColorstr='#4394f4', GradientType=0);
     height: 350px;
     left: 0;
@@ -149,7 +146,7 @@ html {
 }
 
 .pricing-features {
-    color: #016FF9;
+    color: #f35525;
     font-weight: 600;
     letter-spacing: 1px;
     margin: 50px 0 25px;
@@ -167,7 +164,7 @@ html {
 }
 
 .pricing-price {
-    color: #016FF9;
+    color: #f35525;
     display: block;
     font-size: 32px;
     font-weight: 700;
@@ -176,7 +173,7 @@ html {
 .pricing-button {
     border: 1px solid #9dd1ff;
     border-radius: 10px;
-    color: #348EFE;
+    color: #f35525;
     display: inline-block;
     margin: 25px 0;
     padding: 15px 35px;
@@ -190,12 +187,12 @@ html {
 }
 
 .pricing-button.is-featured {
-    background-color: #48aaff;
+    background-color: #f35525;
     color: #fff;
 }
 
 .pricing-button.is-featured:hover,
 .pricing-button.is-featured:active {
-    background-color: #269aff;
+    background-color: #f35525;
 }
 </style>

@@ -92,6 +92,11 @@
               <v-btn color="#f35525" ><a href="" class="nav-link">Book a Meeting</a></v-btn>
           </router-link>
           </li> -->
+          <li class="nav-item">
+            <router-link to="/plans">
+              <v-btn color="#f35525" ><a href="" class="nav-link">Buy a plan</a></v-btn>
+          </router-link>
+          </li>
         </ul>
       </div>
     </div>
