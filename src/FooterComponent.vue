@@ -101,6 +101,11 @@
                                     Terms & Conditions
                                     </router-link>
                             </p>
+                            <p>
+                                    <router-link to="/refundpolicy">
+                                    Refund Policy
+                                    </router-link>
+                            </p>
                             
                         </div>
                         <!-- Grid column -->
