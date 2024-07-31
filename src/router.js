@@ -10,6 +10,9 @@ import ThankYouPage from './components/ThankYouPage';
 import DigitalParchi from './components/DigitalParchi';
 import CreditsPage from './components/CreditsPage';
 import MeetingPage from './components/MeetingPage';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsConditions from './components/TermsConditions';
+import PlansPage from './components/PlansPage';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -26,6 +29,9 @@ const router = createRouter({
         { path: '/digitalparchi', component: DigitalParchi},
         { path: '/credits', component: CreditsPage},
         { path: '/meeting', component: MeetingPage},
+        { path: '/privacypolicy', component: PrivacyPolicy},
+        { path: '/terms', component: TermsConditions},
+        { path: '/plans', component: PlansPage},
         
     ],
     scrollBehavior(to) {

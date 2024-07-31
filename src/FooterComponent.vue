@@ -82,18 +82,26 @@
                                 <router-link to="/digitalparchi" class="">Digital Parchi</router-link>
                             </p>
                             <p>
-                                <a href="#!" class="">About Us</a>
-                            </p>
-                            <div>
-                            <p>
-                                    <router-link to="#">
+                                    <router-link to="/contact-us">
                                     Contact Us
                                     </router-link>
                             </p>
-                            </div>
                             <p>
-                                <a href="/credits" class="">Credits</a>
+                                    <router-link to="/credits">
+                                    Credits
+                                    </router-link>
                             </p>
+                            <p>
+                                    <router-link to="/privacypolicy">
+                                    Privacy Policy
+                                    </router-link>
+                            </p>
+                            <p>
+                                    <router-link to="/terms">
+                                    Terms & Conditions
+                                    </router-link>
+                            </p>
+                            
                         </div>
                         <!-- Grid column -->
 
