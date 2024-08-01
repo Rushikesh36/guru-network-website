@@ -1,6 +1,6 @@
 <template>
-    <div class="privacy-policy container-fluid">
-        <h1>Return and Refund Policy</h1>
+    <div class="privacy-policy ">
+        <h1 class="text-center">Refund Policy</h1>
         <p>Last updated: July 31, 2024</p>
         <p>Thank you for shopping at Guru Network.</p>
         <p>If, for any reason, You are not completely satisfied with a purchase We invite You to review our policy on
@@ -60,4 +60,57 @@
     </div>
 </template>
 
-<style></style>
+<style>
+.privacy-policy {
+  background-color: #f9f9f9;
+  margin: 5% 10% !important;
+  padding: 5%;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+.privacy-policy h1, .privacy-policy h2, .privacy-policy h3 {
+  color: #333;
+}
+
+.privacy-policy h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.privacy-policy h2 {
+  font-size: 2em;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.privacy-policy h3 {
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.privacy-policy p {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.privacy-policy ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.privacy-policy ul li {
+  margin-bottom: 10px;
+}
+
+.privacy-policy a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.privacy-policy a:hover {
+  text-decoration: underline;
+}</style>

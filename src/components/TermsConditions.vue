@@ -1,5 +1,5 @@
 <template>
-    <div class="privacy-policy container-fluid">
+    <div class="privacy-policy">
         <h2 class="text-center">Terms and Conditions</h2>
         <p>Last updated: July 31, 2024</p>
         <p>Please read these terms and conditions carefully before using Our Service.</p>
