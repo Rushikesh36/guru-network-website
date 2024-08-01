@@ -35,9 +35,7 @@
             <li>
                 <p><strong>Terms and Conditions</strong> (also referred as &quot;Terms&quot;) mean these Terms and
                     Conditions that form the entire agreement between You and the Company regarding the use of the
-                    Service. This Terms and Conditions agreement has been created with the help of the <a
-                        href="https://www.freeprivacypolicy.com/free-terms-and-conditions-generator/"
-                        target="_blank">Free Terms and Conditions Generator</a>.</p>
+                    Service.</p>
             </li>
             <li>
                 <p><strong>Third-party Social Media Service</strong> means any services or content (including data,
