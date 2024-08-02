@@ -1,7 +1,7 @@
 <template>
     <section data-aos="fade-up">
         <div class="">
-        <h2 class="text-center mt-6">BUYER / SELLER FORM</h2>
+            <h2 class="text-center mt-6">BUYER / SELLER FORM</h2>
         </div>
         <div class="mt-8"></div>
         <v-form @submit.prevent="submit" ref="form">
@@ -31,8 +31,9 @@
                         <v-chip color="orange" class="mb-2">
                             Select Property Type
                         </v-chip>
-                        <v-select label="Property Type*" variant="solo" v-model="obj.flatType" :rules="errorMessage.flatType"
-                            type="text" :items="['1 BHK', '2 BHK', '3 BHK', 'Other',]"></v-select>
+                        <v-select label="Property Type*" variant="solo" v-model="obj.flatType"
+                            :rules="errorMessage.flatType" type="text"
+                            :items="['1 BHK', '2 BHK', '3 BHK', 'Other',]"></v-select>
                         <v-text-field
                             hint="Enter Property Area i.e. square foot, and property type i.e. 4BHK etc if selected Other Property Type above"
                             v-model="obj.configuration" variant="solo" :rules="errorMessage.configuration"
@@ -41,8 +42,9 @@
                         <v-text-field hint="Enter Property Address" v-model="obj.address" variant="solo"
                             :rules="errorMessage.address" label="Enter Your Property Address*">
                         </v-text-field>
-                        <v-text-field hint="Enter Expected Price to Sell the Property" v-model="obj.price" variant="solo"
-                            :rules="errorMessage.price" label="Enter Expected Price to Sell the Property*">
+                        <v-text-field hint="Enter Expected Price to Sell the Property" v-model="obj.price"
+                            variant="solo" :rules="errorMessage.price"
+                            label="Enter Expected Price to Sell the Property*">
                         </v-text-field>
                     </div>
 
@@ -79,10 +81,10 @@
                         <v-text-field v-if="obj.flatType.includes('Other')" v-model="obj.otherRequirement"
                             :rules="errorMessage.other" label="Please Enter your Property Requirement">
                         </v-text-field>
-
-                        <v-text-field hint="E.g. Mumbai, Delhi, Kanjurmarg etc.." v-model="obj.locationPreferences"
-                            variant="solo" label="Location Preferences">
-                        </v-text-field>
+                        <v-autocomplete hint="E.g. Mumbai, Delhi, Kanjurmarg etc.." v-model="obj.locationPreferences" :items="cities" closable-chips
+                            item-title="description" item-value="description" label="Search for a city" chips multiple
+                            clearable :loading="loading" :search="search" @update:search="fetchCities"
+                            return-object variant="solo" :rules="errorMessage.locationPreferences"></v-autocomplete>
 
                         <v-chip color="orange" class="mb-2">
                             Select Budget Range
@@ -132,7 +134,8 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" v-model="obj.facility" value="Gym" id="facility2">
+                        <input class="form-check-input" type="checkbox" v-model="obj.facility" value="Gym"
+                            id="facility2">
                         <label class="form-check-label" for="facility2">
                             Gym
                         </label>
@@ -180,7 +183,8 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" v-model="obj.facility" value="Other" id="facility9">
+                        <input class="form-check-input" type="checkbox" v-model="obj.facility" value="Other"
+                            id="facility9">
                         <label class="form-check-label" for="facility9">
                             Other
                         </label>
@@ -224,7 +228,8 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" v-model="obj.movein" value="Flexible" id="movein5">
+                        <input class="form-check-input" type="checkbox" v-model="obj.movein" value="Flexible"
+                            id="movein5">
                         <label class="form-check-label" for="movein5">
                             Flexible
                         </label>
@@ -259,11 +264,18 @@
 
 <script>
 import axios from "axios";
+import debounce from 'lodash/debounce';
 export default {
     data() {
         return {
+            search: '',
+            selectedCities: null,
+            cities: [],
+            loading: false,
+            sessionToken: '',
             snackbar: false,
             errorMessage: {
+                locationPreferences:  [v => !!v || 'Please Enter your Location Preferences'],
                 configuration: [v => !!v || 'Please Enter Flat Configuration'],
                 consumer: [v => !!v || 'Please Select a Consumer Type'],
                 name: [v => !!v || 'Please Enter a name'],
@@ -284,7 +296,7 @@ export default {
                 ],
             },
             obj: {
-                locationPreferences: '',
+                locationPreferences: [],
                 configuration: '',
                 price: '',
                 consumer: '',
@@ -300,7 +312,8 @@ export default {
                 facility: [],
                 movein: [],
                 address: '',
-            }
+            },
+            cache: {},
         }
     },
     computed: {
@@ -332,9 +345,59 @@ export default {
     mounted() {
         //const obj = {name: 'rush', email: 'rushikeshwani36@gmail.com', senderType: 'seller'};
         //this.sendMail(obj);
-
+        this.sessionToken = this.generateSessionToken();
+        window.addEventListener('error', this.handleGlobalError);
+    },
+    beforeUnmount() {
+        window.removeEventListener('error', this.handleGlobalError);
     },
     methods: {
+        handleGlobalError(event) {
+            if (event.message.includes('ResizeObserver loop completed with undelivered notifications')) {
+                console.warn('Suppressed ResizeObserver loop error:', event);
+                event.preventDefault(); // Prevent the error from propagating further
+            }
+        },
+        generateSessionToken() {
+            return Math.random().toString(36).substring(2) + Date.now().toString(36);
+        },
+        onInput: debounce(function (val) {
+            this.fetchCities(val);
+        }, 10000),
+        async fetchCities(newSearch) {
+            this.search = newSearch;
+            console.log('calyx in search', this.search, this.cities);
+            if (newSearch == null) {
+                console.log('calyx in if');
+                return;
+            }
+            if (newSearch.length < 3) {
+                console.log('calyx in if');
+                return;
+            }
+
+            this.loading = true;
+            if (this.cache[newSearch]) {
+                this.items = this.cache[newSearch];
+                this.loading = false;
+                return;
+            }
+            const apiKey = 'AIzaSyBjgcI7kbncIqT19OLQZY85zlOFIeQBEdY'; // Replace with your actual API key
+            const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${apiKey}&input=${this.search}&components=country:in&sessiontoken=${this.sessionToken}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('calyx', data.predictions);
+                    this.cities = data.predictions;
+                    this.cache[newSearch] = data.predictions;
+                    this.loading = false;
+                })
+                .catch(error => {
+                    console.error('Error fetching cities:', error);
+                    this.loading = false;
+                });
+        },
         async sendMail(obj) {
             let name = obj.name;
             let email = obj.email;
@@ -377,6 +440,11 @@ export default {
                     delete this.obj.address;
                     delete this.obj.configuration;
                     delete this.obj.price;
+                    console.log('calyx', this.obj.locationPreferences)
+                    const concatenatedDescriptions = this.obj.locationPreferences.map(item => item.description).join(' || ');
+                    this.obj.locationPreferences = concatenatedDescriptions;
+                    console.log('calyx', this.obj.locationPreferences)
+
                     this.$store.dispatch('addBuyerData', this.obj);
                     this.sendMail(this.obj);
                     this.snackbar = true;
@@ -409,7 +477,7 @@ export default {
 </script>
 
 <style>
-    .center-form {
+.center-form {
     margin: 0 auto;
     width: 50%;
 }
@@ -418,7 +486,7 @@ export default {
     padding: 20px;
 }
 
-.planet-imgs{
+.planet-imgs {
     height: 80px;
     width: auto;
 }

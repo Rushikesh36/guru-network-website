@@ -13,6 +13,7 @@
     "core-js": "^3.8.3",
     "countup.js": "^2.8.0",
     "firebase": "^10.4.0",
+    "lodash": "^4.17.21",
     "vue": "^3.2.13",
     "vue-countup-v2": "^4.0.0",
     "vue-lazyload": "^3.0.0",
