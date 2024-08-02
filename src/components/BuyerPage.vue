@@ -382,8 +382,7 @@ export default {
                 this.loading = false;
                 return;
             }
-            const apiKey = 'AIzaSyBjgcI7kbncIqT19OLQZY85zlOFIeQBEdY'; // Replace with your actual API key
-            const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${apiKey}&input=${this.search}&components=country:in&sessiontoken=${this.sessionToken}`;
+            const url = `https://us-central1-guru-network-ab08d.cloudfunctions.net/expressApi/autocomplete?input=${this.search}&sessiontoken=${this.sessionToken}`;
 
             fetch(url)
                 .then(response => response.json())
