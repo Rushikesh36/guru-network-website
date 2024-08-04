@@ -341,10 +341,11 @@
     <div class="mt-12 text-center">
       <h2 class="text-center mb-6">Connect with us right now!</h2>
       <v-tabs v-model="tab" color="#f35525" align-tabs="center">
-        <v-tab :value="1">House Buyers/Sellers</v-tab>
-        <v-tab :value="2">Channel Partners/Brokers</v-tab>
-        <v-tab :value="3">Developers</v-tab>
-        <v-tab :value="4">Loan Letter</v-tab>
+        <v-tab :value="1">House Buyers</v-tab>
+        <v-tab :value="2">House Sellers</v-tab>
+        <v-tab :value="3">Channel Partners/Brokers</v-tab>
+        <v-tab :value="4">Developers</v-tab>
+        <v-tab :value="5">Loan Letter</v-tab>
       </v-tabs>
       <v-window v-model="tab">
         <v-window-item :value="1">
@@ -359,11 +360,7 @@
                 Aa jao, we'll show you a range of options perfectly tailored to your preferences! From cozy apartments
                 to spacious villas, we've got it all. Discover your ideal home with Guru Network.
                 <br>
-                Ghar bechna chahte ho? Want to sell your property?
-                <br>
-                Aa jao boss, we'll help you close the deal! List your property with us and reach the right buyers in no
-                time. Let's make selling hassle-free.
-                <br>
+               
                 <router-link to="/buyer">
                   <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
                 </router-link>
@@ -373,6 +370,26 @@
           </v-container>
         </v-window-item>
         <v-window-item :value="2">
+          <v-container fluid>
+            <div class="row">
+              <div class="col-md-6">
+                <v-img :src="require('../assets/images/seller.png')"></v-img>
+              </div>
+              <div class="col-md-6 data">
+                Ghar bechna chahte ho? Want to sell your property?
+                <br>
+                Aa jao boss, we'll help you close the deal! List your property with us and reach the right buyers in no
+                time. Let's make selling hassle-free.
+                <br>
+                <router-link to="/seller">
+                  <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
+                </router-link>
+              </div>
+
+            </div>
+          </v-container>
+        </v-window-item>
+        <v-window-item :value="3">
           <v-container fluid>
             <div class="row">
               <div class="col-md-6">
@@ -390,7 +407,7 @@
             </div>
           </v-container>
         </v-window-item>
-        <v-window-item :value="3">
+        <v-window-item :value="4">
           <v-container fluid>
             <div class="row">
               <div class="col-md-6 ">
@@ -409,7 +426,7 @@
             </div>
           </v-container>
         </v-window-item>
-        <v-window-item :value="4">
+        <v-window-item :value="5">
           <v-container fluid>
             <div class="row">
               <div class="col-md-6">
