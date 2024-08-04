@@ -21,14 +21,15 @@
             <br />
             <a href="https://www.freepik.com/free-photo/hands-agent-client-shaking-hands-after-signed-contract-buy-new-apartment_5216324.htm#position=9">Image by jcomp</a> on Freepik
             <br />
-            <a href="https://www.freepik.com/free-photo/map-lying-wooden-table_15846774.htm#position=10">Image by rawpixel.com</a> on Freepik
+            <a href="https://www.freepik.com/free-vector/real-estate-agent-offering-house-young-family-couple-wife-husband-choosing-new-suburb-home-living_24023256.htm#position=1&from_element=collections">Image by studio4rt on Freepik</a>
+            <!-- <a href="https://www.freepik.com/free-photo/map-lying-wooden-table_15846774.htm#position=10">Image by rawpixel.com</a> on Freepik
             <a href="https://www.flaticon.com/free-icons/planet" title="planet icons">Planet icons created by Freepik - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/venus" title="venus icons">Venus icons created by turkkub - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/moon" title="moon icons">Moon icons created by Freepik - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/planet" title="planet icons">Planet icons created by Freepik - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/neptune" title="neptune icons">Neptune icons created by Umeicon - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/earth" title="earth icons">Earth icons created by Freepik - Flaticon</a>
-            <a href="https://www.flaticon.com/free-icons/uranus" title="uranus icons">Uranus icons created by Freepik - Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/uranus" title="uranus icons">Uranus icons created by Freepik - Flaticon</a> -->
             </ul> 
         </div>
     </div>
