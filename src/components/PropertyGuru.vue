@@ -4,7 +4,7 @@
         <div class="d-flex row pt-12 container property-guru">
             <div class="col-md-5 col-lg-5 col-xl-4 ">
                 <!-- <v-img src="https://firebasestorage.googleapis.com/v0/b/guru-network-ab08d.appspot.com/o/bhavesh-temp%20(1).jpg?alt=media&token=1e59ddbe-f9e3-4a07-a2ff-2eeaf2e24445"></v-img> -->
-                <v-img :src="require('../assets/images/bhavesh-temp.jpg')"></v-img>
+                <v-img :src="require('../assets/images/Bhavesh_pic.png')"></v-img>
             </div>
             <div class="col-md-7 col-lg-7 col-xl-6">
                 <p>
