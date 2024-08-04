@@ -2,6 +2,7 @@ import { createRouter , createWebHistory } from 'vue-router';
 // import store from './store';
 import LandingPage from './components/LandingPage';
 import BuyerPage from './components/BuyerPage';
+import SellerPage from './components/SellerPage';
 import DeveloperPage from './components/DeveloperPage';
 import ChannelPage from './components/ChannelPartners';
 import PropertyGuru from './components/PropertyGuru';
@@ -22,6 +23,7 @@ const router = createRouter({
         { path: '/about-us', component: LandingPage},
         { path: '/contact-us', component: LandingPage},
         { path: '/buyer', component: BuyerPage},
+        { path: '/seller', component: SellerPage},
         { path: '/developer', component: DeveloperPage},
         { path: '/channelpartner', component: ChannelPage},
         { path: '/propertytransactionguru', component: PropertyGuru},

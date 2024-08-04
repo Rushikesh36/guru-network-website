@@ -1,7 +1,7 @@
 <template>
     <section data-aos="fade-up">
         <div class="">
-            <h2 class="text-center mt-6">BUYER FORM</h2>
+            <h2 class="text-center mt-6">SELLER FORM</h2>
         </div>
         <div class="mt-8"></div>
         <v-form @submit.prevent="submit" ref="form">
@@ -133,7 +133,7 @@
                             Parking
                         </label>
                     </div>
-                    <!-- <div class="form-check">
+                    <div class="form-check">
                         <input class="form-check-input" type="checkbox" v-model="obj.facility" value="Gym"
                             id="facility2">
                         <label class="form-check-label" for="facility2">
@@ -181,7 +181,7 @@
                         <label class="form-check-label" for="facility8">
                             Unfurnished
                         </label>
-                    </div> -->
+                    </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" v-model="obj.facility" value="Other"
                             id="facility9">
@@ -299,7 +299,7 @@ export default {
                 locationPreferences: [],
                 configuration: '',
                 price: '',
-                consumer: 'Buyer',
+                consumer: 'Seller',
                 additional: '',
                 otherRequirement: '',
                 otherBudget: '',

@@ -72,7 +72,7 @@
                 time. Let's make selling hassle-free.
                 <br />
                 <div class="contact_button">
-                  <router-link to="/buyer">
+                  <router-link to="/seller">
                     <v-btn color="#f35525" class="mt-4">Contact Us</v-btn>
                   </router-link>
                 </div>
@@ -199,7 +199,7 @@
 
       <v-carousel-item>
         <v-img :src="require('../assets/images/carousel2.jpg')" cover></v-img>
-        <router-link to="/buyer">
+        <router-link to="/finance">
           <div class="carousel-text">
             <p class="">
               Loan Letter

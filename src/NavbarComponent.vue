@@ -57,7 +57,10 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <router-link to="/buyer">
-                <a class="dropdown-item" >House Buyer / Seller</a>
+                <a class="dropdown-item" >House Buyer</a>
+              </router-link>
+              <router-link to="/seller">
+                <a class="dropdown-item" >House Seller</a>
               </router-link>
               <router-link to="/channelpartner">
                 <a class="dropdown-item" >Channel Partners / Broker</a>
