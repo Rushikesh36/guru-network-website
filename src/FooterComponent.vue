@@ -130,7 +130,7 @@
 
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-                © 2024 Copyright: Guru Network
+                © 2024 Copyright: Guru Network | Owned & Managed by Kaware Estate Private Limited
             </div>
             <!-- Copyright -->
         </footer>
