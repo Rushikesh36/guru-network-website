@@ -6,7 +6,7 @@ import SellerPage from './components/SellerPage';
 import DeveloperPage from './components/DeveloperPage';
 import ChannelPage from './components/ChannelPartners';
 import PropertyGuru from './components/PropertyGuru';
-import FinancialService from './components/FinancialServices';
+//import FinancialService from './components/FinancialServices';
 import ThankYouPage from './components/ThankYouPage';
 import DigitalParchi from './components/DigitalParchi';
 import CreditsPage from './components/CreditsPage';
@@ -27,7 +27,7 @@ const router = createRouter({
         { path: '/developer', component: DeveloperPage},
         { path: '/channelpartner', component: ChannelPage},
         { path: '/propertytransactionguru', component: PropertyGuru},
-        { path: '/finance', component: FinancialService },
+        //{ path: '/finance', component: FinancialService },
         { path: '/success', component: ThankYouPage},
         { path: '/digitalparchi', component: DigitalParchi},
         { path: '/credits', component: CreditsPage},
