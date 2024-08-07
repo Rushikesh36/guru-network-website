@@ -55,7 +55,10 @@
                             <hr class="mb-4 mt-0 d-inline-block mx-auto"
                                 style="width: 60px; background-color: #f35525; height: 4px" />
                             <p>
-                                <router-link to="/buyer" class="">House Buyer/Seller</router-link>
+                                <router-link to="/buyer" class="">House Buyer</router-link>
+                            </p>
+                            <p>
+                                <router-link to="/seller" class="">House Seller</router-link>
                             </p>
                             <p>
                                 <router-link to="/channelpartner" class="">Channel Partners/Brokers</router-link>
@@ -63,9 +66,9 @@
                             <p>
                                 <router-link to="/developer" class="">Developers</router-link>
                             </p>
-                            <p>
+                            <!-- <p>
                                 <router-link to="/finance" class="">Loan Letter</router-link>
-                            </p>
+                            </p> -->
                         </div>
                         <!-- Grid column -->
 

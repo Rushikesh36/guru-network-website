@@ -69,9 +69,9 @@
                 <a class="dropdown-item" >Developers</a>
               </router-link>
             
-              <router-link to="/finance">
+              <!-- <router-link to="/finance">
                 <a class="dropdown-item">Loan letter</a>
-              </router-link>
+              </router-link> -->
             </div>
           </li>
           <!-- <li class="nav-item">

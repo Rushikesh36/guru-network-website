@@ -19,7 +19,7 @@
             </p>
           </div>
         </div>
-        <div class="d-flex justify-content-center pt-5">
+        <!-- <div class="d-flex justify-content-center pt-5">
           <div class="cards" @click="showInfo(3)">
             <p>
               <v-icon>mdi-currency-inr</v-icon>
@@ -28,7 +28,7 @@
               Letter
             </p>
           </div>
-        </div>
+        </div> -->
         <v-dialog v-model="dialog" max-width="500px">
           <v-card v-if="activeBox === 2">
             <v-card-actions>
@@ -199,10 +199,10 @@
 
       <v-carousel-item>
         <v-img :src="require('../assets/images/carousel2.jpg')" cover></v-img>
-        <router-link to="/finance">
+        <router-link to="/buyer">
           <div class="carousel-text">
             <p class="">
-              Loan Letter
+              Find Your Dream Home Today
             </p>
           </div>
         </router-link>
@@ -345,7 +345,7 @@
         <v-tab :value="2">House Sellers</v-tab>
         <v-tab :value="3">Channel Partners/Brokers</v-tab>
         <v-tab :value="4">Developers</v-tab>
-        <v-tab :value="5">Loan Letter</v-tab>
+        <!-- <v-tab :value="5">Loan Letter</v-tab> -->
       </v-tabs>
       <v-window v-model="tab">
         <v-window-item :value="1">
