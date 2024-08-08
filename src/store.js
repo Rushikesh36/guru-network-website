@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import { addBuyerData, addSellerData, addDeveloperData, addLegalData, addBrokerData , addGeneralData, addFinanceData, addParchiData } from './index';
+import { addBuyerData, addSellerData, addDeveloperData, addLegalData, addBrokerData , addGeneralData, addFinanceData, addParchiData, addMeetingData } from './index';
 // import firebase from 'firebase/compat/app';
 // import 'firebase/compat/auth';
 // import 'firebase/compat/firestore';
@@ -51,6 +51,10 @@ const store = createStore({
     addBrokerData({state}, obj){
       console.log(state);
       addBrokerData(obj);
+    },
+    addMeetingData({state}, obj){
+      console.log(state);
+      addMeetingData(obj);
     }
     
   },

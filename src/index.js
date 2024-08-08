@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { serverTimestamp } from "firebase/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const config = {
@@ -15,6 +16,7 @@ const config = {
 
 
 const firebaseApp = firebase.initializeApp(config);
+const auth = getAuth(firebaseApp);
 
 const db = firebaseApp.firestore()
 const buyer = db.collection('buyer');
@@ -25,6 +27,9 @@ const broker = db.collection('broker');
 const general = db.collection('general');
 const financial = db.collection('financial');
 const parchi = db.collection('parchi');
+const meeting = db.collection('meeting');
+
+export { auth, RecaptchaVerifier, signInWithPhoneNumber };
 
 export const addBuyerData = async (obj) => {
   obj.timestamp = serverTimestamp()
@@ -65,4 +70,9 @@ export const addFinanceData = async (obj) => {
 export const addParchiData = async (obj) => {
   obj.timestamp = serverTimestamp()
   await parchi.add(obj);
+}
+
+export const addMeetingData = async (obj) => {
+  obj.timestamp = serverTimestamp()
+  await meeting.doc(obj.phoneNumber).collection(obj.uid).add(obj);
 }
