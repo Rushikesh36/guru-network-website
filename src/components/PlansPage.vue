@@ -8,33 +8,49 @@
                         <img src="https://s22.postimg.cc/8mv5gn7w1/paper-plane.png" alt="" class="pricing-img">
                         <h2 class="pricing-header">Basic</h2>
                         <ul class="pricing-features">
-                            <li class="pricing-features-item">Dedicated</li>
-                            <li class="pricing-features-item">Simple horizontal scalability</li>
+                            <li class="pricing-features-item">30 mins</li>
+                            <li class="pricing-features-item">Virtual</li>
                         </ul>
                         <span class="pricing-price">₹ 5000</span>
-                        <a href="#/" class="pricing-button">BUY</a>
+                        <router-link 
+                            :to="{ path: '/checkout', query: { price: 5000, time: 30, mode:'Virtual'}}" 
+                            class="pricing-button is-featured"
+                        >
+                            BUY
+                        </router-link>
                     </div>
 
                     <div class="pricing-plan">
                         <img src="https://s28.postimg.cc/ju5bnc3x9/plane.png" alt="" class="pricing-img">
                         <h2 class="pricing-header">Standard</h2>
                         <ul class="pricing-features">
-                            <li class="pricing-features-item">Never sleeps</li>
-                            <li class="pricing-features-item">Multiple workers for more powerful apps</li>
+                            <li class="pricing-features-item">60 mins</li>
+                            <li class="pricing-features-item">Virtual / In-Person</li>
                         </ul>
                         <span class="pricing-price">₹ 10000</span>
-                        <a href="#/" class="pricing-button is-featured">BUY</a>
+                        <router-link 
+                            :to="{ path: '/checkout', query: { price: 10000, time: 60, mode:'Virtual / In-Person' } }" 
+                            class="pricing-button is-featured"
+                        >
+                            BUY
+                        </router-link>
+                       
                     </div>
 
                     <div class="pricing-plan">
                         <img src="https://s21.postimg.cc/tpm0cge4n/space-ship.png" alt="" class="pricing-img">
                         <h2 class="pricing-header">Premimum</h2>
                         <ul class="pricing-features">
-                            <li class="pricing-features-item">Dedicated</li>
-                            <li class="pricing-features-item">Simple horizontal scalability</li>
+                            <li class="pricing-features-item">90 mins</li>
+                            <li class="pricing-features-item">Virtual / In-Person</li>
                         </ul>
                         <span class="pricing-price">₹ 15000</span>
-                        <a href="#/" class="pricing-button">BUY</a>
+                        <router-link 
+                            :to="{ path: '/checkout', query: { price: 15000, time: 90, mode:'Virtual / In-Person' } }" 
+                            class="pricing-button is-featured"
+                        >
+                            BUY
+                        </router-link>
                     </div>
 
                 </div>

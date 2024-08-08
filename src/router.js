@@ -15,6 +15,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsConditions from './components/TermsConditions';
 import PlansPage from './components/PlansPage';
 import RefundPolicy from './components/RefundPolicy';
+import CheckoutPage from './components/CheckoutPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -36,6 +37,7 @@ const router = createRouter({
         { path: '/terms', component: TermsConditions},
         { path: '/plans', component: PlansPage},
         { path: '/refundpolicy', component: RefundPolicy},
+        { path: '/checkout', component: CheckoutPage},
         
     ],
     scrollBehavior(to) {
