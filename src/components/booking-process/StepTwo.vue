@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <v-btn @click="handleSubmit">Pay</v-btn>
     </div>
 </template>
 
@@ -15,6 +15,9 @@ export default {
     methods: {
         handleSubmit() {
             this.info = this.$store.state.userData;
+            if(this.info === ''){
+                return;
+            }
             axios.post('http://localhost:3000/api/phonepe/payment', {
                 data: {
                     name: this.info.name,
