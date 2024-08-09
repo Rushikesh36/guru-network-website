@@ -76,3 +76,23 @@ export const addMeetingData = async (obj) => {
   obj.timestamp = serverTimestamp()
   await meeting.doc(obj.phoneNumber).collection(obj.uid).add(obj);
 }
+
+export const checkStatus = async (uid,phoneNumber) => {
+  let status = await meeting.doc(phoneNumber).collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', false).get();
+  let result = [];
+  status.forEach(doc => {
+    result.push(doc.id);
+  });
+  console.log(result.length>0);
+  return result.length>0;
+}
+
+export const setBookingStatus = async (uid,phoneNumber) => { 
+  let status = await meeting.doc(phoneNumber).collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', false).limit(1).get();
+  let result = [];
+  status.forEach(doc => {
+    result.push(doc.id);
+  });
+  await meeting.doc(phoneNumber).collection(uid).doc(result[0]).update({ bookingStatus: true });
+  console.log(result);
+}

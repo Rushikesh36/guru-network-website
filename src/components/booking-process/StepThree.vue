@@ -1,39 +1,30 @@
 <template>
-    <div>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/abhishekwani2022/one-on-one"
-            style="min-width:320px;height:700px;"></div>
+    <div v-if="status">
+        <CalendlyPage />
+    </div>
+    <div v-else>
+        Booking already done, please check your email
     </div>
 </template>
 
 <script>
+import CalendlyPage from './CalendlyPage';
+
 export default {
-    data() {
-        return {
-
-        }
-    },
     mounted() {
-        window.addEventListener('message', this.handleIframeMessage);
+        this.$store.dispatch('checkStatus');
+        const recaptchaScript = document.createElement('script')
+        recaptchaScript.setAttribute('src', 'https://assets.calendly.com/assets/external/widget.js')
+        document.head.appendChild(recaptchaScript)
     },
-    beforeUnmount() {
-        window.removeEventListener('message', this.handleIframeMessage);
+    components: {
+        CalendlyPage,
     },
-    methods: {
-        handleIframeMessage(e) {
-            if (this.isCalendlyEvent(e)) {
-                /* Example to get the name of the event */
-                if(e.data.event === 'calendly.event_scheduled') {
-                    console.log('Event Booked');
-                }
-                console.log("Event name:", e.data.event);
-
-                /* Example to get the payload of the event */
-                console.log("Event details:", e.data.payload);
-            }
-        },
-        isCalendlyEvent(e) {
-            return e.origin === "https://calendly.com" && e.data.event && e.data.event.indexOf("calendly.") === 0;
-        },
+    computed: {
+        status() {
+            console.log('status from page', this.$store.state.status);
+            return this.$store.state.status;
+        }
     },
 }
 </script>

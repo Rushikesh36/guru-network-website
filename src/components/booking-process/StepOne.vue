@@ -53,7 +53,7 @@
     </section>
 
     <v-dialog v-model="snackbar" class="modalWidth" persistent>
-        <v-card loading :text="`We are redirecting you to payment page, please wait ...`"
+        <v-card loading :text="`We are redirecting you to checkout page, please wait ...`"
             subtitle="Confirmation"></v-card>
     </v-dialog>
 </template>
@@ -79,6 +79,8 @@ export default {
                 email: '',
                 phoneNumber: '',
                 uid: '',
+                paymentStatus: 'n/a',
+                bookingStatus: false,
             },
             emailOtp: '',
             confirmEmailOtp: '',
@@ -179,14 +181,16 @@ export default {
         },
         async submit() {
             const validate = await this.$refs.form.validate();
-            if (validate.valid) {
+            if (validate.valid && this.emailVerified && this.phoneVerified) {
+                this.$store.state.phoneNumber = this.obj.phoneNumber;
+                this.$store.state.uid = this.obj.uid;
                 this.sendMail(this.obj);
                 this.$store.dispatch('addMeetingData', this.obj);
                 this.snackbar = true;
                 setTimeout(() => {
                     this.handleReset();
                     this.snackbar = false;
-                    this.$router.push('/success');
+                    this.$router.push('/meeting/checkout');
                 }, 5000);
             }
         },

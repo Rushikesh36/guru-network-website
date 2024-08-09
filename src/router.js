@@ -15,6 +15,9 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsConditions from './components/TermsConditions';
 import PlansPage from './components/PlansPage';
 import RefundPolicy from './components/RefundPolicy';
+import StepOne from './components/booking-process/StepOne';
+import StepTwo from './components/booking-process/StepTwo';
+import StepThree from './components/booking-process/StepThree';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -36,6 +39,9 @@ const router = createRouter({
         { path: '/terms', component: TermsConditions},
         { path: '/plans', component: PlansPage},
         { path: '/refundpolicy', component: RefundPolicy},
+        { path: '/meeting/form', component: StepOne},
+        { path: '/meeting/checkout', component: StepTwo},
+        { path: '/meeting/booking', component: StepThree},
         
     ],
     scrollBehavior(to) {

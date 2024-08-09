@@ -5,25 +5,7 @@
         <div class="text-center">
             <v-btn color="#f35525" @click="handleSubmit()">PAY</v-btn>
         </div>
-        <!-- <div class="stepper">
-            <v-stepper :items="['Step 1', 'Step 2', 'Step 3', 'Step 4']">
-                <template v-slot:[`item.1`]>
-                    <ReadCalendar v-if="`item.1`"/>
-                </template>
 
-                <template v-slot:[`item.2`]>
-                    <PaymentGateway />
-                </template>
-
-                <template v-slot:[`item.3`]>
-                    <CalendarBooking />
-                </template>
-
-                <template v-slot:[`item.4`]>
-                    <BookingAck />
-                </template>
-            </v-stepper>
-        </div> -->
         <div class="stepper">
             <v-stepper alt-labels v-model="steps">
                 <v-stepper-header >

@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import { addBuyerData, addSellerData, addDeveloperData, addLegalData, addBrokerData , addGeneralData, addFinanceData, addParchiData, addMeetingData } from './index';
+import { addBuyerData, addSellerData, addDeveloperData, addLegalData, addBrokerData , addGeneralData, addFinanceData, addParchiData, addMeetingData, checkStatus, setBookingStatus } from './index';
 // import firebase from 'firebase/compat/app';
 // import 'firebase/compat/auth';
 // import 'firebase/compat/firestore';
@@ -17,7 +17,9 @@ import { addBuyerData, addSellerData, addDeveloperData, addLegalData, addBrokerD
 
 const store = createStore({
   state: {
-    
+    uid: '5c88EYnDAcfGUJXk4XZivrb1mBD2',
+    phoneNumber: '+919920690020',
+    status: false,
   },
   actions: {
     addSellerData({state}, obj){
@@ -55,6 +57,15 @@ const store = createStore({
     addMeetingData({state}, obj){
       console.log(state);
       addMeetingData(obj);
+    },
+    async checkStatus({state}) {
+      console.log(state);
+      state.status = await checkStatus(state.uid,state.phoneNumber);
+      console.log(state.status);
+    },
+    setBookingStatus({state}) {
+      console.log(state);
+      setBookingStatus(state.uid,state.phoneNumber);
     }
     
   },
