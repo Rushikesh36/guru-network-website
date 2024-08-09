@@ -5,10 +5,6 @@
     <div v-else-if="status === 'n/a'">
         Booking already done, please check your email
     </div>
-    <div v-else-if="status === 'not-paid'">
-        You have not made any payments, please make a payment first through out booking system
-        Link to booking page
-    </div>
     <div v-else>
         Page not found
     </div>

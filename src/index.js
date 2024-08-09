@@ -90,7 +90,7 @@ export const checkStatus = async (uid) => {
   if(result.length === 0){
     return 'n/a';
   }else{
-    return 'not-paid'
+    return 'paid'
   }
 
 }
