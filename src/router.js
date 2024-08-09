@@ -18,6 +18,7 @@ import RefundPolicy from './components/RefundPolicy';
 import StepOne from './components/booking-process/StepOne';
 import StepTwo from './components/booking-process/StepTwo';
 import StepThree from './components/booking-process/StepThree';
+import LoginPage from './components/booking-process/LoginPage';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -42,6 +43,7 @@ const router = createRouter({
         { path: '/meeting/form', component: StepOne},
         { path: '/meeting/checkout', component: StepTwo},
         { path: '/meeting/booking', component: StepThree},
+        { path: '/login', component: LoginPage},
         
     ],
     scrollBehavior(to) {

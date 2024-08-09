@@ -17,9 +17,10 @@ import { addBuyerData, addSellerData, addDeveloperData, addLegalData, addBrokerD
 
 const store = createStore({
   state: {
-    uid: '5c88EYnDAcfGUJXk4XZivrb1mBD2',
-    phoneNumber: '+919920690020',
-    status: false,
+    uid: '',
+    phoneNumber: '',
+    status: 'n/a',
+    userData: '',
   },
   actions: {
     addSellerData({state}, obj){

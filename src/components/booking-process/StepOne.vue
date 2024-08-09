@@ -4,35 +4,54 @@
         <div class="mt-8"></div>
         <v-form @submit.prevent="submit" ref="form">
             <div class="center-form add-form">
+
+                <!-- // name -->
                 <v-text-field hint="Please enter your full name." v-model="obj.name" variant="solo"
                     :rules="errorMessage.name" label="Full Name*">
                 </v-text-field>
-                <v-text-field v-if="!emailVerified" hint="Provide your Email address"
-                    v-model="obj.email" variant="solo" :rules="errorMessage.email" label="Email*">
+
+                <!-- //email text -->
+                <v-text-field v-if="!emailVerified" hint="Provide your Email address" v-model="obj.email" variant="solo"
+                    :rules="errorMessage.email" label="Email*">
                 </v-text-field>
-                <v-text-field v-if="emailVerified"
-                    hint="Provide your Email address" v-model="obj.email"
-                    variant="solo" :rules="errorMessage.email" readonly label="Email*">
+
+                <!-- //email text readonly -->
+                <v-text-field v-if="emailVerified" hint="Provide your Email address" v-model="obj.email" variant="solo"
+                    :rules="errorMessage.email" readonly label="Email*">
                 </v-text-field>
-                <v-icon v-if="emailVerified" icon="mdi-check" />
-                <v-btn v-if="!emailVerified" @click="sendOTPtoEmail()">
+
+                <!-- //email otp verified -->
+                <p v-if="emailOtpSent && emailVerified" style="color: green;">Email OTP Verified <v-icon icon="mdi-check"/></p>
+
+                <!-- //email otp wrong -->
+                <p v-if="confirmEmailOtp.toString().length === 4 && emailOtpSent && !emailVerified" style="color: red;">OTP Incorrect <v-icon icon="mdi-close"/></p>
+                <!-- // send button email -->
+                <v-btn v-if="!emailVerified" color="success mb-5" @click="sendOTPtoEmail()">
                     Send OTP
                 </v-btn>
-                <v-otp-input v-if="emailOtpSent && !emailVerified" :length="4" variant="solo" v-model="confirmEmailOtp"></v-otp-input>
-
-
-                <v-text-field v-if="!phoneVerified" hint="Provide phone number for contact details" v-model="obj.phoneNumber" variant="solo"
-                    :rules="errorMessage.phoneNumber" label="Phone Number*">
+                <br>
+                <p v-if="emailOtpSent && !emailVerified">Enter OTP</p>
+                <v-otp-input v-if="emailOtpSent && !emailVerified" :length="4" variant="solo"
+                    v-model="confirmEmailOtp"></v-otp-input>
+               
+                <v-text-field v-if="!phoneVerified" hint="Provide phone number for contact details"
+                    v-model="phone" variant="solo" :rules="errorMessage.phoneNumber" label="Phone Number*">
                 </v-text-field>
-                <v-text-field v-if="phoneVerified" hint="Provide phone number for contact details" v-model="obj.phoneNumber" readonly variant="solo"
-                    :rules="errorMessage.phoneNumber" label="Phone Number*">
+                <v-text-field v-if="phoneVerified" hint="Provide phone number for contact details"
+                    v-model="phone" readonly variant="solo" :rules="errorMessage.phoneNumber"
+                    label="Phone Number*">
                 </v-text-field>
-                <v-icon v-if="phoneVerified" icon="mdi-check" />
+                <p v-if="phoneOtpSent && phoneVerified" style="color: green;">OTP Verified <v-icon icon="mdi-check"/></p>
+                <p v-if="phoneDelay && confirmPhoneOtp.toString().length === 6 &&phoneOtpSent && !phoneVerified" style="color: red;">OTP Incorrect <v-icon icon="mdi-close"/></p>
+                
                 <div id="recaptcha-container"></div>
-                <v-btn v-if="!phoneVerified" @click="sendVerificationCode()">
+                <v-btn v-if="!phoneVerified" color="success mb-5" @click="sendVerificationCode()">
                     Send OTP
                 </v-btn>
-                <v-otp-input v-if="phoneOtpSent && !phoneVerified" :length="6" variant="solo" v-model="confirmPhoneOtp"></v-otp-input>
+                <p v-if="phoneOtpSent && !phoneVerified">Enter OTP</p>
+                <v-otp-input v-if="phoneOtpSent && !phoneVerified" :length="6" variant="solo-filled"
+                    v-model="confirmPhoneOtp"></v-otp-input>
+               
                 <v-text-field hint="Please Tell your purpose for Meeting" v-model="obj.purpose" variant="solo"
                     :rules="errorMessage.purpose" label="Enter Purpose of Meeting*">
                 </v-text-field>
@@ -40,6 +59,8 @@
                     :items="['Virtual', 'In-person']"></v-select>
             </div>
             <div class="text-center mt-5 mb-8">
+                <p v-if="submitClicked && !emailVerified">Please verify Email</p>
+                <p v-if="submitClicked && !phoneVerified">Please verify Phone Number</p>
                 <v-btn class="me-4" type="submit" color="success">
                     Submit
                 </v-btn>
@@ -68,10 +89,16 @@ export default {
             errorMessage: {
                 name: [v => !!v || 'Please Enter Your Name'],
                 purpose: [v => !!v || 'Please Enter your Purpose'],
-                email: [v => !!v || 'Please Enter your Email'],
+                email: [v => !!v || 'Please Enter your Email',
+                v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Please Enter a valid Email'],
+
                 mode: [v => !!v || 'Please Enter Mode of Meeting'],
-                phoneNumber: [v => !!v || 'Please Enter your Phone Number'],
+                phoneNumber: [
+                    v => !!v || 'Phone number is required',
+                    v => /^(\+91\d{10}|\d{10})$/.test(v) || 'Phone number must be exactly 10 digits'
+                ]
             },
+            phone: '',
             obj: {
                 name: '',
                 purpose: '',
@@ -89,6 +116,8 @@ export default {
             emailOtpSent: false,
             phoneOtpSent: false,
             phoneVerified: false,
+            submitClicked: false,
+            phoneDelay: false,
         }
     },
     computed: {
@@ -99,7 +128,7 @@ export default {
     },
     methods: {
         sendVerificationCode() {
-            
+
             window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
                 'size': 'invisible',
                 'callback': () => {
@@ -108,8 +137,9 @@ export default {
             });
 
             const appVerifier = window.recaptchaVerifier;
-           
-            this.obj.phoneNumber = '+91' + this.obj.phoneNumber;
+            if(!this.phone.includes('+91')){
+                this.obj.phoneNumber = '+91' + this.phone;
+            }
             signInWithPhoneNumber(auth, this.obj.phoneNumber, appVerifier)
                 .then((confirmationResult) => {
                     this.phoneOtpSent = true;
@@ -124,7 +154,8 @@ export default {
             window.confirmationResult.confirm(code).then((res) => {
                 console.log(res);
                 this.obj.uid = res.user.uid;
-                this.phoneVerified  = true;
+                this.phoneDelay = true;
+                this.phoneVerified = true;
                 this.isAuthenticated = true;
             }).catch((error) => {
                 console.error('Verification failed', error);
@@ -176,15 +207,18 @@ export default {
                 })
         },
         handleReset() {
+            this.submitClicked = false;
             this.$refs.form.reset();
             this.$refs.form.resetValidation();
         },
         async submit() {
+            this.submitClicked = true;
             const validate = await this.$refs.form.validate();
             if (validate.valid && this.emailVerified && this.phoneVerified) {
                 this.$store.state.phoneNumber = this.obj.phoneNumber;
                 this.$store.state.uid = this.obj.uid;
                 this.sendMail(this.obj);
+                this.$store.state.userData = this.obj;
                 this.$store.dispatch('addMeetingData', this.obj);
                 this.snackbar = true;
                 setTimeout(() => {
@@ -203,12 +237,14 @@ export default {
             }
         },
         confirmPhoneOtp(val) {
-            if(String(val.length) == 6){
+            if (String(val.length) == 6) {
                 console.log(val);
                 this.verifyCode();
+            }else{
+                this.phoneDelay = false;
             }
         }
-    }
+    },
 }
 </script>
 

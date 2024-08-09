@@ -8,42 +8,99 @@
                         <img src="https://s22.postimg.cc/8mv5gn7w1/paper-plane.png" alt="" class="pricing-img">
                         <h2 class="pricing-header">Basic</h2>
                         <ul class="pricing-features">
-                            <li class="pricing-features-item">Dedicated</li>
-                            <li class="pricing-features-item">Simple horizontal scalability</li>
+                            <li class="pricing-features-item">30 mins</li>
+                            <li class="pricing-features-item">Virtual</li>
                         </ul>
                         <span class="pricing-price">₹ 5000</span>
-                        <a href="#/" class="pricing-button">BUY</a>
+                        <router-link :to="{ path: '/meeting/form' }" class="pricing-button is-featured">
+                            BUY
+                        </router-link>
                     </div>
 
                     <div class="pricing-plan">
                         <img src="https://s28.postimg.cc/ju5bnc3x9/plane.png" alt="" class="pricing-img">
                         <h2 class="pricing-header">Standard</h2>
                         <ul class="pricing-features">
-                            <li class="pricing-features-item">Never sleeps</li>
-                            <li class="pricing-features-item">Multiple workers for more powerful apps</li>
+                            <li class="pricing-features-item">60 mins</li>
+                            <li class="pricing-features-item">Virtual / In-Person</li>
                         </ul>
                         <span class="pricing-price">₹ 10000</span>
-                        <a href="#/" class="pricing-button is-featured">BUY</a>
+                        <router-link :to="{ path: '/meeting/form' }" class="pricing-button is-featured">
+                            BUY
+                        </router-link>
+
                     </div>
 
                     <div class="pricing-plan">
                         <img src="https://s21.postimg.cc/tpm0cge4n/space-ship.png" alt="" class="pricing-img">
                         <h2 class="pricing-header">Premimum</h2>
                         <ul class="pricing-features">
-                            <li class="pricing-features-item">Dedicated</li>
-                            <li class="pricing-features-item">Simple horizontal scalability</li>
+                            <li class="pricing-features-item">90 mins</li>
+                            <li class="pricing-features-item">Virtual / In-Person</li>
                         </ul>
                         <span class="pricing-price">₹ 15000</span>
-                        <a href="#/" class="pricing-button">BUY</a>
+                        <router-link :to="{ path: '/meeting/form' }" class="pricing-button is-featured">
+                            BUY
+                        </router-link>
                     </div>
 
                 </div>
             </div>
+            <div class="container">
+                <v-card class="mx-auto" max-width="800">
+                    
+
+                    <v-card-text>
+                        <div class="font-weight-bold ms-1 mb-2">Instructions on how to book a meeting with Mr. Bhavesh Kaware</div>
+
+                        <v-timeline align="start" density="compact">
+                            <v-timeline-item v-for="message in messages" :key="message.time" dot-color="green"
+                                size="x-small">
+                                <div class="mb-4">
+                                    <div>{{ message.message }}</div>
+                                </div>
+                            </v-timeline-item>
+                        </v-timeline>
+                    </v-card-text>
+                </v-card>
+            </div>
+
         </div>
     </div>
 </template>
-
+<script>
+  export default {
+    data: () => ({
+      messages: [
+        {
+          message: `Please choose the plan from the options above that best suits your needs.`,
+          color: 'deep-purple-lighten-1',
+        },
+        {
+          message: `Fill out all the required details for booking the meeting.`,
+          color: 'deep-purple-lighten-1',
+        },
+        {
+          message: 'Complete the payment process.',
+          color: 'green',
+        },
+        {
+          message: 'After the payment is confirmed, book a meeting based on your available time slots.',
+          color: 'deep-purple-lighten-1',
+        },
+        {
+          message: 'Once the meeting is booked, a confirmation email will be sent to you.',
+          color: 'deep-purple-lighten-1',
+        },
+      ],
+    }),
+  }
+</script>
 <style scoped>
+ol {
+    list-style-type: disc;
+}
+
 html {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;

@@ -84,7 +84,12 @@ export const checkStatus = async (uid,phoneNumber) => {
     result.push(doc.id);
   });
   console.log(result.length>0);
-  return result.length>0;
+  if(result.length === 0){
+    return 'not-paid';
+  }else{
+    return 'paid'
+  }
+  
 }
 
 export const setBookingStatus = async (uid,phoneNumber) => { 
