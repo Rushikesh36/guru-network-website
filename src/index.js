@@ -86,11 +86,11 @@ export const checkStatus = async (uid) => {
   status.forEach(doc => {
     result.push(doc.id);
   });
-  console.log(result.length > 0);
-  if (result.length === 0) {
-    return 'not-paid';
-  } else {
-    return 'paid'
+  console.log(result.length>0);
+  if(result.length === 0){
+    return 'n/a';
+  }else{
+    return 'not-paid'
   }
 
 }

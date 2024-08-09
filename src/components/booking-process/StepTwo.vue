@@ -15,8 +15,10 @@ export default {
     methods: {
         handleSubmit() {
             this.info = this.$store.state.userData;
-            console.log('zippy here',this.info);
-            axios.post('http://localhost:5000/api/phonepe/payment', {
+            if(this.info === ''){
+                return;
+            }
+            axios.post('http://localhost:3000/api/phonepe/payment', {
                 data: {
                     name: this.info.name,
                     email: this.info.email,
