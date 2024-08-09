@@ -74,30 +74,48 @@ export const addParchiData = async (obj) => {
 
 export const addMeetingData = async (obj) => {
   obj.timestamp = serverTimestamp()
-  await meeting.doc(obj.phoneNumber).collection(obj.uid).add(obj);
+  await meeting.doc('meeting').collection(obj.uid).add(obj);
+  await meeting.doc('meetinguids').update({
+    uid: firebase.firestore.FieldValue.arrayUnion(obj.uid)
+  })
 }
 
-export const checkStatus = async (uid,phoneNumber) => {
-  let status = await meeting.doc(phoneNumber).collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', false).get();
+export const checkStatus = async (uid) => {
+  let status = await meeting.doc('meeting').collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', false).get();
   let result = [];
   status.forEach(doc => {
     result.push(doc.id);
   });
-  console.log(result.length>0);
-  if(result.length === 0){
+  console.log(result.length > 0);
+  if (result.length === 0) {
     return 'not-paid';
-  }else{
+  } else {
     return 'paid'
   }
-  
+
 }
 
-export const setBookingStatus = async (uid,phoneNumber) => { 
-  let status = await meeting.doc(phoneNumber).collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', false).limit(1).get();
+export const setBookingStatus = async (uid) => {
+  let status = await meeting.doc('meeting').collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', false).limit(1).get();
   let result = [];
   status.forEach(doc => {
     result.push(doc.id);
   });
-  await meeting.doc(phoneNumber).collection(uid).doc(result[0]).update({ bookingStatus: true });
+  await meeting.doc('meeting').collection(uid).doc(result[0]).update({ bookingStatus: true });
   console.log(result);
 }
+
+const getAllData = async () => {
+  let uids = (await meeting.doc('meetinguids').get()).data();
+  uids = uids.uid;
+  let result = [];
+  for(let i=0; i< uids.length; i++){
+    const temp = (await meeting.doc('meeting').collection(uids[i]).get());
+    temp.forEach(doc => {
+      result.push({ ...doc.data(), id: doc.id });
+    });
+  }
+  console.log(result);
+}
+
+getAllData();

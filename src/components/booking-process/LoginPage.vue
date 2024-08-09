@@ -69,7 +69,7 @@ export default {
                 this.phoneVerified = true;
                 this.isAuthenticated = true;
                 this.phoneDelay = true;
-                this.$router.push('/meeting/booking');
+                this.$router.push(`/meeting/booking/${this.phoneNumber}/${res.user.uid}`);
             }).catch((error) => {
                 console.error('Verification failed', error);
             });

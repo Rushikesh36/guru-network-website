@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <v-btn @click="handleSubmit">Pay</v-btn>
     </div>
 </template>
 
@@ -15,12 +15,14 @@ export default {
     methods: {
         handleSubmit() {
             this.info = this.$store.state.userData;
-            axios.post('http://localhost:3000/api/phonepe/payment', {
+            console.log('zippy here',this.info);
+            axios.post('http://localhost:5000/api/phonepe/payment', {
                 data: {
                     name: this.info.name,
                     email: this.info.email,
                     phone: this.info.phoneNumber,
-                    user_id: Math.floor(100 + Math.random() * 900),
+                    uid: this.info.uid,
+                    userid: Math.floor(100 + Math.random() * 900),
                 }
             })
                 .then(response => {

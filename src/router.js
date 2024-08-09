@@ -42,7 +42,7 @@ const router = createRouter({
         { path: '/refundpolicy', component: RefundPolicy},
         { path: '/meeting/form', component: StepOne},
         { path: '/meeting/checkout', component: StepTwo},
-        { path: '/meeting/booking', component: StepThree},
+        { path: '/meeting/booking/:phone/:uid', component: StepThree},
         { path: '/login', component: LoginPage},
         
     ],

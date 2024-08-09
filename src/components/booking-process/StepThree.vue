@@ -19,6 +19,8 @@ import CalendlyPage from './CalendlyPage';
 
 export default {
     mounted() {
+        this.$store.state.uid = this.$route.params.uid;
+        this.$store.state.phoneNumber = this.$route.params.phone;
         this.$store.dispatch('checkStatus');
         const recaptchaScript = document.createElement('script')
         recaptchaScript.setAttribute('src', 'https://assets.calendly.com/assets/external/widget.js')
