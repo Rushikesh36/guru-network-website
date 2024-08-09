@@ -85,9 +85,9 @@ export const checkStatus = async (uid,phoneNumber) => {
   });
   console.log(result.length>0);
   if(result.length === 0){
-    return 'not-paid';
+    return 'n/a';
   }else{
-    return 'paid'
+    return 'not-paid'
   }
   
 }
