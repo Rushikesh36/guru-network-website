@@ -19,6 +19,7 @@ import StepOne from './components/booking-process/StepOne';
 import StepTwo from './components/booking-process/StepTwo';
 import StepThree from './components/booking-process/StepThree';
 import LoginPage from './components/booking-process/LoginPage';
+import BookingFailure from './components/booking-process/BookingFailure.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -43,6 +44,7 @@ const router = createRouter({
         { path: '/meeting/form', component: StepOne},
         { path: '/meeting/checkout', component: StepTwo},
         { path: '/meeting/booking/:phone/:uid', component: StepThree},
+        { path: '/meeting/failure', component: BookingFailure},
         { path: '/login', component: LoginPage},
         
     ],
