@@ -79,6 +79,7 @@ export default {
     },
     mounted() {
         this.info = this.$store.state.userData;
+        console.log('calyx new', this.info);
     }
 }
 
