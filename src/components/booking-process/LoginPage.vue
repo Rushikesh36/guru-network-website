@@ -2,7 +2,7 @@
 <template>
     <section data-aos="fade-up">
         <div class="center-form add-form">
-            <h2>Phone Authentication</h2>
+            <h2 class="mb-5">Sign In</h2>
             <v-text-field v-if="!phoneVerified" hint="Provide phone number for contact details" v-model="phone"
                 variant="solo" label="Phone Number*">
             </v-text-field>

@@ -31,7 +31,7 @@
                 </v-btn>
                 <br>
                 <p v-if="emailOtpSent && !emailVerified">Enter OTP</p>
-                <v-otp-input v-if="emailOtpSent && !emailVerified" :length="4" variant="solo"
+                <v-otp-input v-if="emailOtpSent && !emailVerified" :length="4" variant="solo-filled"
                     v-model="confirmEmailOtp"></v-otp-input>
                
                 <v-text-field v-if="!phoneVerified" hint="Provide phone number for contact details"
