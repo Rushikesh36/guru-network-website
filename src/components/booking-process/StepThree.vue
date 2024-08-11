@@ -1,19 +1,18 @@
 <template>
     <div class="message-box container">
-        <CalendlyPage />
-        <v-card class="checkout-card">
+        <div class="">
             <div v-if="status === 'paid'">
-                
+                <CalendlyPage />
             </div>
-            <div v-else-if="status === 'n/a'">
+            <div class="checkout-card" v-else-if="status === 'n/a'">
                 <p>Your personal meeting with Mr. Bhavesh Kaware has been successfully booked.
                     <br>
                     Please check your email.
-                    
-                </p>    
-                  <hr>
+
+                </p>
+                <hr>
                 <p>
-                    If still email not receievd, 
+                    If still email not receievd,
                     <br>
                     Please contact at :
                     <br>
@@ -25,7 +24,7 @@
             <div v-else>
                 <p>Page not found</p>
             </div>
-        </v-card>
+        </div>
     </div>
 </template>
 
@@ -56,15 +55,15 @@ export default {
 <style scoped>
 .checkout-card {
     background-color: greenyellow;
-    
+
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20%;
 }
-.checkout-card p{
-    font-size: 1.2rem;
-    
-}
 
+.checkout-card p {
+    font-size: 1.2rem;
+
+}
 </style>
