@@ -1,8 +1,9 @@
 <template>
     <div class="message-box container">
+        <CalendlyPage />
         <v-card class="checkout-card">
             <div v-if="status === 'paid'">
-                <CalendlyPage />
+                
             </div>
             <div v-else-if="status === 'n/a'">
                 <p>Your personal meeting with Mr. Bhavesh Kaware has been successfully booked.
