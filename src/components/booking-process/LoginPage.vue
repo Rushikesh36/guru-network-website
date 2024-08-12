@@ -26,6 +26,7 @@
 
 <script>
 import { auth, RecaptchaVerifier, signInWithPhoneNumber } from '../../index';
+import axios from 'axios';
 
 export default {
     data() {
@@ -37,6 +38,9 @@ export default {
             phone: '',
             phoneDelay: false,
         };
+    },
+    mounted() {
+        axios.get('https://us-central1-guru-network-ab08d.cloudfunctions.net/expressApi/api/phonepe/resolveCriticalErrors');
     },
     methods: {
         sendVerificationCode() {
