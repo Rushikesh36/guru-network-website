@@ -71,8 +71,7 @@ export default {
 
 <style scoped>
 .checkout-card {
-    background-color: greenyellow;
-
+    background-color:#D3D3D3;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
