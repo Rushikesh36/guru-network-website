@@ -1,103 +1,235 @@
 <template>
-    <section data-aos="fade-up">
-        <h2 class="text-center mt-6">BOOK A MEETING</h2>
-        <div class="mt-8"></div>
-        <div class="text-center">
-            <v-btn color="#f35525" @click="handleSubmit()">PAY</v-btn>
-        </div>
+    <div>
+        <div class="background">
 
-        <div class="stepper">
-            <v-stepper alt-labels v-model="steps">
-                <v-stepper-header >
-                    <v-stepper-item :value="1" :complete="steps > 1" step="1" title="Step 1"></v-stepper-item>
-                   
-                    <v-divider></v-divider>
-                    <v-stepper-item :value="2" :complete="steps > 2" step="2" title="Step 2"></v-stepper-item>
-
-                    <v-divider></v-divider>
-
-                    <v-stepper-item :value="3" :complete="steps > 3" step="3" title="Step 3"></v-stepper-item>
-
-                    <v-divider></v-divider>
-
-                    <v-stepper-item :value="4" :complete="steps > 4" step="4" title="Step 4"></v-stepper-item>
-                </v-stepper-header>
-            </v-stepper>
-            <div class="mt-8">
-                <div v-if="steps == 1">
-                    <StepOne />
-                    <v-btn @click="steps=2">Next Step</v-btn>
+            <div class="container">
+                <div class="panel pricing-table">
+                    <div class="pricing-plan">
+                        <img src="https://s21.postimg.cc/tpm0cge4n/space-ship.png" alt="" class="pricing-img">
+                        <h2 class="pricing-header">Premimum</h2>
+                        <ul class="pricing-features">
+                            <li class="pricing-features-item">90 mins</li>
+                            <li class="pricing-features-item">Virtual / In-Person</li>
+                        </ul>
+                        <span class="pricing-price">₹ 15000</span>
+                        <router-link :to="{ path: '/meeting/form' }" class="pricing-button is-featured">
+                            BUY
+                        </router-link>
+                        <hr>
+                        <p>If you have already paid for the meeting and was unable to book it.
+                        <br>
+                        Please <router-link to="/login">click here</router-link>
+                    </p>
                 </div>
-                <div v-if="steps == 2">
-                    <StepTwo />
-                    <v-btn @click="steps=3">Next Step</v-btn>
-                </div>
-                <div v-if="steps == 3">
-                    <StepThree />
-                    <v-btn @click="steps=4">Next Step</v-btn>
-                </div>
-                <div v-if="steps == 4">
-                   
-                    <v-btn @click="steps=5">Next Step</v-btn>
-                </div>
+                    </div>
+                    
             </div>
-            <v-btn @click="nextStep" :disabled="steps !== 4">Finished</v-btn>
+            <div class="container">
+                <v-card class="mx-auto" max-width="800">
+
+                    <v-card-text>
+                        <div class="font-weight-bold ms-1 mb-2">Instructions on how to book a meeting with Mr. Bhavesh
+                            Kaware</div>
+
+                        <v-timeline align="start" density="compact">
+                            <v-timeline-item v-for="message in messages" :key="message.time" dot-color="green"
+                                size="x-small">
+                                <div class="mb-4">
+                                    <div>{{ message.message }}</div>
+                                </div>
+                            </v-timeline-item>
+                        </v-timeline>
+                    </v-card-text>
+                </v-card>
+            </div>
+
         </div>
-    </section>
-    <ReadCalendar />
+    </div>
 </template>
-
-<style>
-.stepper {
-    padding-left: 20%;
-    padding-right: 20%;
-}
-@media (max-width:1023px){
-    .stepper {
-    padding-left: 1%;
-    padding-right: 1%;
-}
-}
-</style>
-
 <script>
-import StepOne from './booking-process/StepOne';
-import StepTwo from './booking-process/StepTwo';
-import StepThree from './booking-process/StepThree';
-import axios from 'axios';
-
 export default {
-    components: {
-        StepOne,
-        StepTwo,
-        StepThree,
-    },
-    data() {
-       return {
-        steps: 1,
-       }
-    },
-    methods: {
-       handleSubmit(){
-        axios.post('http://localhost:5000/api/phonepe/payment', {
-            data : {
-                name : 'Abhishek',
-                email : 'abhishekwani619@gmail.com',
-                phone : '1234567890',
-                amount : 25000,
-                user_id: Math.floor(100 + Math.random() * 900),
-            }
-        })
-        .then(response => {
-            console.log('zippy',response.data.data.data.instrumentResponse.redirectInfo.url);
-            window.location.href = response.data.data.data.instrumentResponse.redirectInfo.url;
-        })
-        .catch(error => {
-            console.log('zippy2',error);
-        });
-
-       }
-    }
-
+    data: () => ({
+        messages: [
+            {
+                message: `Please choose the plan from the options above that best suits your needs.`,
+                color: 'deep-purple-lighten-1',
+            },
+            {
+                message: `Fill out all the required details for booking the meeting.`,
+                color: 'deep-purple-lighten-1',
+            },
+            {
+                message: 'Complete the payment process.',
+                color: 'green',
+            },
+            {
+                message: 'After the payment is confirmed, book a meeting based on your available time slots.',
+                color: 'deep-purple-lighten-1',
+            },
+            {
+                message: 'Once the meeting is booked, a confirmation email will be sent to you.',
+                color: 'deep-purple-lighten-1',
+            },
+        ],
+    }),
 }
 </script>
+<style scoped>
+html {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.background {
+    padding: 0 25px 25px;
+    position: relative;
+    width: 100%;
+}
+
+.background p {
+
+    z-index: 100;
+}
+
+.background::after {
+    content: '';
+    background: #ff9372;
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#60a9ff', endColorstr='#4394f4', GradientType=0);
+    height: 350px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+@media (min-width: 900px) {
+    .background {
+        padding: 0 0 25px;
+    }
+}
+
+.container {
+    margin: 0 auto;
+    padding: 50px 0 0;
+    max-width: 500px;
+    width: 100%;
+}
+
+.panel {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px 25px;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+.pricing-table {
+    box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 900px) {
+    .pricing-table {
+        flex-direction: row;
+    }
+}
+
+.pricing-table * {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.pricing-plan {
+    border-bottom: 1px solid #e1f1ff;
+    padding: 25px;
+}
+
+.pricing-plan:last-child {
+    border-bottom: none;
+}
+
+@media (min-width: 900px) {
+    .pricing-plan {
+        border-bottom: none;
+        border-right: 1px solid #e1f1ff;
+        flex-basis: 100%;
+        padding: 25px 50px;
+    }
+
+    .pricing-plan:last-child {
+        border-right: none;
+    }
+}
+
+.pricing-img {
+    margin-bottom: 25px;
+    max-width: 100%;
+}
+
+.pricing-header {
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.pricing-features {
+    color: #f35525;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 50px 0 25px;
+}
+
+.pricing-features-item {
+    border-top: 1px solid #e1f1ff;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 15px 0;
+}
+
+.pricing-features-item:last-child {
+    border-bottom: 1px solid #e1f1ff;
+}
+
+.pricing-price {
+    color: #f35525;
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.pricing-button {
+    border: 1px solid #9dd1ff;
+    border-radius: 10px;
+    color: #f35525;
+    display: inline-block;
+    margin: 25px 0;
+    padding: 15px 35px;
+    text-decoration: none;
+    transition: all 150ms ease-in-out;
+}
+
+.pricing-button:hover,
+.pricing-button:focus {
+    background-color: #e1f1ff;
+}
+
+.pricing-button.is-featured {
+    background-color: #f35525;
+    color: #fff;
+}
+
+.pricing-button.is-featured:hover,
+.pricing-button.is-featured:active {
+    background-color: #f35525;
+}
+</style>
