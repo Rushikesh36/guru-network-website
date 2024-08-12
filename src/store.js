@@ -61,7 +61,9 @@ const store = createStore({
     },
     async checkStatus({state}) {
       console.log(state);
-      state.status = await checkStatus(state.uid,state.phoneNumber);
+      let res = await checkStatus(state.uid,state.phoneNumber);
+      state.status = res.status;
+      state.userData = res;
       console.log(state.status);
     },
     setBookingStatus({state}) {

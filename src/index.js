@@ -80,6 +80,11 @@ export const addMeetingData = async (obj) => {
   })
 }
 
+const toMilliseconds = (timestamp) => {
+  // Use only seconds for the primary comparison, nanoseconds are truncated.
+  return (timestamp.seconds * 1000) + (timestamp.nanoseconds / 1e6);
+};
+
 export const checkStatus = async (uid) => {
   let status1 = await meeting.doc('meeting').collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', false).get();
   let status2 = await meeting.doc('meeting').collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', true).get();
@@ -88,19 +93,30 @@ export const checkStatus = async (uid) => {
   status1.forEach(doc => {
     result.push(doc.id);
   });
+  result.sort((a, b) => {
+    const timeA = toMilliseconds(a.timestamp);
+    const timeB = toMilliseconds(b.timestamp);
+
+    // Compare in descending order
+    return timeB - timeA;
+  });
+
   status2.forEach(doc => {
     result2.push(doc.id);
   });
-  console.log(result.length>0);
-  
+  console.log(result.length > 0);
 
-  if(result.length !== 0){
-    return 'paid'
-  }else{
-    if(result2.length){
-      return 'booked';
-    }else{
-      return 'n/a';
+  let res = result[0];
+  if (result.length !== 0) {
+    res.status = 'paid'
+    return res
+  } else {
+    if (result2.length) {
+      res.status = 'booked';
+      return res;
+    } else {
+      res.status = 'n/a';
+      return res;
     }
   }
 
@@ -120,7 +136,7 @@ const getAllData = async () => {
   let uids = (await meeting.doc('meetinguids').get()).data();
   uids = uids.uid;
   let result = [];
-  for(let i=0; i< uids.length; i++){
+  for (let i = 0; i < uids.length; i++) {
     const temp = (await meeting.doc('meeting').collection(uids[i]).get());
     temp.forEach(doc => {
       result.push({ ...doc.data(), id: doc.id });
