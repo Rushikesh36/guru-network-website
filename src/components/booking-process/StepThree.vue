@@ -4,7 +4,7 @@
             <div v-if="status === 'paid'">
                 <CalendlyPage />
             </div>
-            <div class="checkout-card" v-else-if="status === 'n/a'">
+            <div class="checkout-card" v-else-if="status === 'booked'">
                 <p>Your personal meeting with Mr. Bhavesh Kaware has been successfully booked.
                     <br>
                     Please check your email.
@@ -21,7 +21,24 @@
                     <b>Phone : +91 858870108</b>
                 </p>
             </div>
-            <div v-else>
+            <div class="checkout-card" v-else-if="status === 'n/a'">
+                <p>You have not registered or your payment was not successful,
+                    <br>
+                    Kindly go to the following link to book a meeting.
+                    <router-link to="/meeting/form"><a>Book a Meeting</a></router-link>
+                </p>
+                <hr>
+                <p>
+                    If still facing any issues,
+                    <br>
+                    Please contact at :
+                    <br>
+                    <b>Email : contact@gurunetwork.in</b>
+                    <br>
+                    <b>Phone : +91 858870108</b>
+                </p>
+            </div>
+            <div class="checkout-card" v-else>
                 <p>Page not found</p>
             </div>
         </div>

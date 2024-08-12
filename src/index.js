@@ -81,16 +81,27 @@ export const addMeetingData = async (obj) => {
 }
 
 export const checkStatus = async (uid) => {
-  let status = await meeting.doc('meeting').collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', false).get();
+  let status1 = await meeting.doc('meeting').collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', false).get();
+  let status2 = await meeting.doc('meeting').collection(uid).where('paymentStatus', '==', 'success').where('bookingStatus', '==', true).get();
   let result = [];
-  status.forEach(doc => {
+  let result2 = [];
+  status1.forEach(doc => {
     result.push(doc.id);
   });
+  status2.forEach(doc => {
+    result2.push(doc.id);
+  });
   console.log(result.length>0);
-  if(result.length === 0){
-    return 'n/a';
-  }else{
+  
+
+  if(result.length !== 0){
     return 'paid'
+  }else{
+    if(result2.length){
+      return 'booked';
+    }else{
+      return 'n/a';
+    }
   }
 
 }
