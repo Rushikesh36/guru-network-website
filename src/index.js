@@ -91,7 +91,7 @@ export const checkStatus = async (uid) => {
   let result = [];
   let result2 = [];
   status1.forEach(doc => {
-    result.push(doc.id);
+    result.push({ ...doc.data(), id: doc.id});
   });
   result.sort((a, b) => {
     const timeA = toMilliseconds(a.timestamp);
@@ -107,6 +107,7 @@ export const checkStatus = async (uid) => {
   console.log(result.length > 0);
 
   let res = result[0];
+  console.log('calyx',res);
   if (result.length !== 0) {
     res.status = 'paid'
     return res
