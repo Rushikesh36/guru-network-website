@@ -1,55 +1,117 @@
-# GuruNetwork.in
+# GuruNetwork
 
-**GuruNetwork.in** is a real-estate service platform built to help users navigate property transactions, submit inquiries, and access support from the Guru Network ecosystem.
+GuruNetwork is a real-estate services platform built with a Vue.js frontend, Firebase Hosting, and a modular Google Apps Script backend.  
+The system handles user inquiries, stores data in Firestore, synchronizes it with Google Sheets, and maintains optimized scheduled updates using time-based triggers.
 
-This repository contains the codebase for the website along with backend automation powered by **Google Apps Script**, **Firestore**, and **Google Sheets**.
+This repository contains both the **Vue.js frontend** and the **Apps Script backend modules**, organized cleanly for maintenance and scale.
 
 ---
 
 ## 🌐 Live Website
-
-👉 https://gurunetwork.in/
-
----
-
-## 🚀 Features
-
-### 🏠 Real-Estate Service Platform
-- Clean and responsive UI for property transaction inquiries.
-- Optimized for fast navigation and mobile-first experience.
-- Integrated support sections for buyers, sellers, and channel partners.
-
-### 📩 Form Submission → Firestore + Google Sheets Integration
-A complete automated pipeline:
-
-- The **frontend form** sends user data to your backend endpoint.
-- A **Google Apps Script** receives the request.
-- Apps Script interacts with **Google Firestore** through the Firestore REST API wrapper (**FirestoreApp library**).
-- It also reads/writes data in **Google Sheets** using `SpreadsheetApp`.
-- Before adding new entries, the script **checks Firestore** to avoid duplicates.
-- New submissions are appended to the Sheet only when necessary.
-
-This ensures a reliable, synced data flow for analytics and reporting.
+https://gurunetwork.in/
 
 ---
 
-## 🧩 Tech Stack
+## 🚀 Tech Stack
 
-**Frontend:**  
-- HTML, CSS, JavaScript  
-- Responsive design principles  
-- Form validation & structured data flow  
+### **Frontend**
+- Vue.js
+- Vue Router (if used)
+- Axios / Fetch API for backend communication
+- Responsive layout with custom CSS or utility classes
 
-**Backend / Automation:**  
-- Google Apps Script  
-- Firestore REST API (FirestoreApp library)  
-- Google Sheets (SpreadsheetService)  
-- JSON-based request/response handling  
+### **Backend (Apps Script)**
+- Google Apps Script Web App endpoint
+- Firestore integration using **FirestoreApp REST API wrapper**
+- Google Sheets updates using `SpreadsheetApp`
+- Modular `.gs` files for different business categories  
+  (`broker.gs`, `buyer.gs`, `developer.gs`, `lawyer.gs`, etc.)
+- Time-based triggers (cron job equivalent)
 
-**Hosting:**  
-- Hosted on a cloud/web hosting provider (edit to specify: e.g., cPanel, Netlify, Vercel)
+### **Hosting**
+- Firebase Hosting for frontend deployment
+- Apps Script deployment for backend services
+
+---
+
+## 🧩 Features
+
+### 🏠 Real-Estate Inquiry System
+- Vue-based dynamic forms for multiple user categories (buyer, seller, broker, lawyer, developer, finance, etc.)
+- Clean UI with fast page rendering
+- API service layer for structured backend communication
+
+---
+
+## 🔁 Automated Backend Workflow  
+A complete automated data pipeline ensures all user submissions are stored, synced, and updated efficiently.
+
+### **1. Frontend → Backend (Apps Script)**
+- The Vue app sends form data to a deployed Google Apps Script Web App.
+- Apps Script validates data and routes it to category-specific handlers  
+  (`buyer.gs`, `seller.gs`, `broker.gs`, etc.).
+
+### **2. Firestore Integration**
+Using the FirestoreApp REST API wrapper, Apps Script:
+- Writes new documents  
+- Fetches existing ones  
+- Prevents duplication  
+- Structures data by category
+
+### **3. Google Sheets Sync**
+- Apps Script updates a centralized Google Sheet for reporting, analytics, and dashboarding.
+- Uses `SpreadsheetApp` to append or update data.
+
+### **4. Cron Job (Every 10 Minutes)**
+A scheduled trigger keeps Sheets synced with Firestore.
+
+---
+
+## ⚡ Performance Optimization
+
+Originally, the sync script rewrote **the entire dataset** on every cron run — causing redundancy, slow execution, and unnecessary resource usage.
+
+### ✔ Optimized Solution Implemented
+- Only the **latest 100 Firestore records** are fetched during each sync.
+- Older rows remain untouched.
+- No duplicates are created.
+- Execution time is significantly reduced.
+
+**Result:**  
+A fast, scalable, cost-efficient system that handles growing data effortlessly.
 
 ---
 
 ## 📂 Project Structure
 
+```plaintext
+gurunetwork/
+│
+├── appscripts/
+│   ├── broker.gs        # Backend logic for brokers
+│   ├── buyer.gs         # Backend logic for buyers
+│   ├── developer.gs     # Backend for developers
+│   ├── finance.gs       # Backend for finance category
+│   ├── general.gs       # Shared logic and helpers
+│   ├── lawyer.gs        # Backend for lawyers
+│   ├── parchi.gs        # Backend for parchi-related workflows
+│   └── seller.gs        # Backend logic for sellers
+│
+├── public/              # Static assets served by Vue
+│
+├── src/
+│   ├── components/      # UI components
+│   ├── views/           # Page views
+│   ├── router/          # App routing (if enabled)
+│   ├── assets/          # Images, icons, etc.
+│   ├── services/
+│   │   └── api.js       # Calls to Apps Script backend
+│   └── App.vue
+│
+├── firebase.json        # Firebase Hosting configuration
+├── .firebaserc
+├── babel.config.js
+├── jsconfig.json
+├── package.json
+├── package-lock.json
+└── vue.config.js
