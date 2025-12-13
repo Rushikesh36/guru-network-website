@@ -82,6 +82,35 @@ A fast, scalable, cost-efficient system that handles growing data effortlessly.
 
 ---
 
+## 🏗 Architecture Overview
+```mermaid
+flowchart TB
+  U[Users] --> FE[Frontend Form Vue.js]
+  FE -->|Submit form data| FS[(Firestore Database)]
+
+  FS -->|Read data via Sheets API| GS[(Google Sheets)]
+
+  TRIG[Scheduled Cron Job<br>Every 10 minutes] --> SYNC[Optimized Sync Logic]
+
+  SYNC -->|Fetch only new records| FS
+  SYNC -->|Append new rows only| GS
+
+  %% Styles with black text
+  classDef user fill:#f2f2f2,stroke:#333,stroke-width:1px,color:#000
+  classDef frontend fill:#cce5ff,stroke:#004085,stroke-width:2px,color:#000
+  classDef data fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000
+  classDef automation fill:#d4edda,stroke:#155724,stroke-width:2px,color:#000
+
+  %% Apply styles
+  class U user
+  class FE frontend
+  class FS,GS data
+  class TRIG,SYNC automation
+
+
+`````
+---
+
 ## 📂 Project Structure
 
 ```plaintext
@@ -115,3 +144,5 @@ gurunetwork/
 ├── package.json
 ├── package-lock.json
 └── vue.config.js
+
+
